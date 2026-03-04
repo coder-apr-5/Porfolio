@@ -1,0 +1,68 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-darkGreen text-sageGreen;
+    /* Grid Dot Background */
+    background-image: radial-gradient(var(--tw-colors-sageGreen) 1px, transparent 1px);
+    background-size: 30px 30px;
+    background-color: var(--tw-colors-darkGreen);
+    margin: 0;
+    overflow-x: hidden;
+  }
+}
+
+@layer utilities {
+  .text-shadow-neon {
+    text-shadow: 0 0 5px theme('colors.neonGreen'), 0 0 10px theme('colors.neonGreen');
+  }
+  
+  /* CRT Scanline effect */
+  .crt::before {
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(
+      rgba(18, 16, 16, 0) 50%,
+      rgba(0, 0, 0, 0.25) 50%),
+      linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+    z-index: 2;
+    background-size: 100% 2px, 3px 100%;
+    pointer-events: none;
+  }
+
+  .pixel-btn {
+    @apply relative border-2 border-neonGreen text-neonGreen font-heading text-sm px-6 py-3 bg-darkGreen/80 transition-all duration-300;
+  }
+  .pixel-btn:hover {
+    @apply bg-neonGreen/20 shadow-neon;
+  }
+}
+
+/* Scrollbar customization */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: theme('colors.darkGreen');
+}
+
+::-webkit-scrollbar-thumb {
+  background: theme('colors.sageGreen');
+  border: 1px solid theme('colors.darkGreen');
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: theme('colors.neonGreen');
+}
