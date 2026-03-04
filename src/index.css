@@ -6,7 +6,7 @@
   html {
     scroll-behavior: smooth;
   }
-  
+
   body {
     @apply bg-darkGreen text-sageGreen;
     /* Grid Dot Background */
@@ -22,7 +22,7 @@
   .text-shadow-neon {
     text-shadow: 0 0 5px theme('colors.neonGreen'), 0 0 10px theme('colors.neonGreen');
   }
-  
+
   /* CRT Scanline effect */
   .crt::before {
     content: " ";
@@ -32,9 +32,8 @@
     left: 0;
     bottom: 0;
     right: 0;
-    background: linear-gradient(
-      rgba(18, 16, 16, 0) 50%,
-      rgba(0, 0, 0, 0.25) 50%),
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%,
+        rgba(0, 0, 0, 0.25) 50%),
       linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
     z-index: 2;
     background-size: 100% 2px, 3px 100%;
@@ -44,8 +43,27 @@
   .pixel-btn {
     @apply relative border-2 border-neonGreen text-neonGreen font-heading text-sm px-6 py-3 bg-darkGreen/80 transition-all duration-300;
   }
+
   .pixel-btn:hover {
     @apply bg-neonGreen/20 shadow-neon;
+  }
+
+  @keyframes float-icon {
+    0% {
+      transform: translateY(0px);
+    }
+
+    50% {
+      transform: translateY(-8px);
+    }
+
+    100% {
+      transform: translateY(0px);
+    }
+  }
+
+  .animate-float {
+    animation: float-icon 3s ease-in-out infinite;
   }
 }
 
