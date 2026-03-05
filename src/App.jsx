@@ -33,13 +33,13 @@ const GlitchAvatar = () => {
 
             setTimeout(() => {
                 setCurrentIndex((prev) => (prev + 1) % avatars.length);
-            }, 100);
+            }, 200);
 
             setTimeout(() => {
                 setIsGlitching(false);
-            }, 300);
+            }, 450);
 
-        }, 2000);
+        }, 3000);
 
         return () => {
             clearInterval(interval);
@@ -48,12 +48,27 @@ const GlitchAvatar = () => {
 
     return (
         <div className="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 border-2 border-neonGreen bg-darkGreen shadow-[0_0_15px_rgba(57,255,20,0.3)] mx-auto md:ml-auto md:mr-0 group z-10 p-2 mt-12 md:mt-0 flex-shrink-0">
-            <div className="relative w-full h-full overflow-hidden border border-sageGreen/50">
-                <img
-                    src={avatars[currentIndex]}
-                    alt="avatar"
-                    className={`w-full h-full object-cover transition-all duration-300 ${isGlitching ? 'scale-110 blur-[2px] brightness-150 grayscale' : 'scale-100 grayscale-0'}`}
-                />
+            <div className={`glitch-wrapper relative w-full h-full overflow-hidden border border-sageGreen/50 ${isGlitching ? 'is-glitching' : ''}`}>
+                <div className="glitch-img-container w-full h-full relative">
+                    <img
+                        src={avatars[currentIndex]}
+                        alt="avatar"
+                        className="w-full h-full object-cover"
+                    />
+
+                    {isGlitching && (
+                        <>
+                            <div
+                                className="glitch-layer glitch-layer-1 absolute inset-0 bg-cover bg-center"
+                                style={{ backgroundImage: `url(${avatars[currentIndex]})` }}
+                            />
+                            <div
+                                className="glitch-layer glitch-layer-2 absolute inset-0 bg-cover bg-center"
+                                style={{ backgroundImage: `url(${avatars[currentIndex]})` }}
+                            />
+                        </>
+                    )}
+                </div>
 
                 <div className="absolute inset-0 pointer-events-none" style={{
                     backgroundImage: 'linear-gradient(rgba(57, 255, 20, 0.1) 1px, transparent 1px)',
