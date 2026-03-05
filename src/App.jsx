@@ -19,35 +19,23 @@ const NavItem = ({ section, current, onClick }) => (
 const GlitchAvatar = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [isGlitching, setIsGlitching] = useState(false);
-    const [binaryText, setBinaryText] = useState('');
 
     const avatars = [
-        { src: boyCoding, label: 'busy in Coding' },
-        { src: boyAi, label: 'busy with ai ml robots' },
-        { src: boySleeping, label: 'sleeping and litsening to music' },
-        { src: boyHoodie, label: 'standing as smart as a developer wearing hoodie' }
+        boyCoding,
+        boyAi,
+        boySleeping,
+        boyHoodie
     ];
 
     useEffect(() => {
-        let blockInterval;
         const interval = setInterval(() => {
             setIsGlitching(true);
-
-            blockInterval = setInterval(() => {
-                let text = '';
-                for (let i = 0; i < 60; i++) {
-                    text += Math.random() > 0.5 ? '1 ' : '0 ';
-                    if (Math.random() > 0.9) text += '\n';
-                }
-                setBinaryText(text);
-            }, 50);
 
             setTimeout(() => {
                 setCurrentIndex((prev) => (prev + 1) % avatars.length);
             }, 100);
 
             setTimeout(() => {
-                clearInterval(blockInterval);
                 setIsGlitching(false);
             }, 300);
 
@@ -55,7 +43,6 @@ const GlitchAvatar = () => {
 
         return () => {
             clearInterval(interval);
-            if (blockInterval) clearInterval(blockInterval);
         };
     }, []);
 
@@ -63,28 +50,15 @@ const GlitchAvatar = () => {
         <div className="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 border-2 border-neonGreen bg-darkGreen shadow-[0_0_15px_rgba(57,255,20,0.3)] mx-auto md:ml-auto md:mr-0 group z-10 p-2 mt-12 md:mt-0 flex-shrink-0">
             <div className="relative w-full h-full overflow-hidden border border-sageGreen/50">
                 <img
-                    src={avatars[currentIndex].src}
+                    src={avatars[currentIndex]}
                     alt="avatar"
                     className={`w-full h-full object-cover transition-all duration-300 ${isGlitching ? 'scale-110 blur-[2px] brightness-150 grayscale' : 'scale-100 grayscale-0'}`}
                 />
 
-                {/* Glitch Overlay */}
-                {isGlitching && (
-                    <div className="absolute inset-0 flex items-center justify-center bg-black/60 mix-blend-hard-light overflow-hidden">
-                        <pre className="text-neonGreen font-heading text-xs md:text-sm leading-tight tracking-widest break-all whitespace-pre-wrap text-shadow-neon opacity-90 w-full p-4 overflow-hidden">
-                            {binaryText}
-                            {binaryText}
-                        </pre>
-                    </div>
-                )}
                 <div className="absolute inset-0 pointer-events-none" style={{
                     backgroundImage: 'linear-gradient(rgba(57, 255, 20, 0.1) 1px, transparent 1px)',
                     backgroundSize: '100% 4px'
                 }}></div>
-            </div>
-
-            <div className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 bg-darkGreen text-neonGreen text-[10px] md:text-[11px] lg:text-xs font-heading font-bold border border-neonGreen px-2 md:px-4 py-1 whitespace-nowrap shadow-neon z-20 w-max max-w-[90%] text-center truncate">
-                &lt; {avatars[currentIndex].label} /&gt;
             </div>
         </div>
     );
@@ -331,7 +305,7 @@ export default function App() {
                             </p>
                             <h1 className="font-heading text-4xl md:text-6xl text-white mb-6 leading-tight min-h-[144px] md:min-h-[160px]">
                                 Hi, I'm <br />
-                                <span className="text-neonGreen text-shadow-neon">
+                                <span className="text-neonGreen text-shadow-neon whitespace-nowrap">
                                     {/* Typewriter for Name */}
                                     <Typewriter
                                         words={['Apurba Roy']}
