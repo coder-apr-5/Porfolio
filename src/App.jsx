@@ -2,6 +2,11 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Github, Linkedin, Instagram, Twitter, Send, ExternalLink, Info, Code, GraduationCap, Briefcase, TerminalSquare, Brain } from 'lucide-react';
 import { Typewriter } from 'react-simple-typewriter';
 
+import boyCoding from './assets/boy_coding.png';
+import boyAi from './assets/boy_ai.png';
+import boySleeping from './assets/boy_sleeping.png';
+import boyHoodie from './assets/boy_hoodie.png';
+
 const NavItem = ({ section, current, onClick }) => (
     <button
         onClick={() => onClick(section.id)}
@@ -10,6 +15,80 @@ const NavItem = ({ section, current, onClick }) => (
         {section.label}
     </button>
 );
+
+const GlitchAvatar = () => {
+    const [currentIndex, setCurrentIndex] = useState(0);
+    const [isGlitching, setIsGlitching] = useState(false);
+    const [binaryText, setBinaryText] = useState('');
+
+    const avatars = [
+        { src: boyCoding, label: 'busy in Coding' },
+        { src: boyAi, label: 'busy with ai ml robots' },
+        { src: boySleeping, label: 'sleeping and litsening to music' },
+        { src: boyHoodie, label: 'standing as smart as a developer wearing hoodie' }
+    ];
+
+    useEffect(() => {
+        let blockInterval;
+        const interval = setInterval(() => {
+            setIsGlitching(true);
+
+            blockInterval = setInterval(() => {
+                let text = '';
+                for (let i = 0; i < 60; i++) {
+                    text += Math.random() > 0.5 ? '1 ' : '0 ';
+                    if (Math.random() > 0.9) text += '\n';
+                }
+                setBinaryText(text);
+            }, 50);
+
+            setTimeout(() => {
+                setCurrentIndex((prev) => (prev + 1) % avatars.length);
+            }, 100);
+
+            setTimeout(() => {
+                clearInterval(blockInterval);
+                setIsGlitching(false);
+            }, 300);
+
+        }, 2000);
+
+        return () => {
+            clearInterval(interval);
+            if (blockInterval) clearInterval(blockInterval);
+        };
+    }, []);
+
+    return (
+        <div className="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 border-2 border-neonGreen bg-darkGreen shadow-[0_0_15px_rgba(57,255,20,0.3)] mx-auto md:ml-auto md:mr-0 group z-10 p-2 mt-12 md:mt-0 flex-shrink-0">
+            <div className="relative w-full h-full overflow-hidden border border-sageGreen/50">
+                <img
+                    src={avatars[currentIndex].src}
+                    alt="avatar"
+                    className={`w-full h-full object-cover transition-all duration-300 ${isGlitching ? 'scale-110 blur-[2px] brightness-150 grayscale' : 'scale-100 grayscale-0'}`}
+                />
+
+                {/* Glitch Overlay */}
+                {isGlitching && (
+                    <div className="absolute inset-0 flex items-center justify-center bg-black/60 mix-blend-hard-light overflow-hidden">
+                        <pre className="text-neonGreen font-heading text-xs md:text-sm leading-tight tracking-widest break-all whitespace-pre-wrap text-shadow-neon opacity-90 w-full p-4 overflow-hidden">
+                            {binaryText}
+                            {binaryText}
+                        </pre>
+                    </div>
+                )}
+                <div className="absolute inset-0 pointer-events-none" style={{
+                    backgroundImage: 'linear-gradient(rgba(57, 255, 20, 0.1) 1px, transparent 1px)',
+                    backgroundSize: '100% 4px'
+                }}></div>
+            </div>
+
+            <div className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 bg-darkGreen text-neonGreen text-[10px] md:text-[11px] lg:text-xs font-heading font-bold border border-neonGreen px-2 md:px-4 py-1 whitespace-nowrap shadow-neon z-20 w-max max-w-[90%] text-center truncate">
+                &lt; {avatars[currentIndex].label} /&gt;
+            </div>
+        </div>
+    );
+};
 
 const TimelineItem = ({ item, index }) => {
     const [isVisible, setIsVisible] = useState(false);
@@ -240,61 +319,67 @@ export default function App() {
 
                 <main className="pt-24 pb-12 max-w-6xl mx-auto px-6 overflow-hidden">
                     {/* HERO SECTION */}
-                    <section id="hero" className="min-h-[85vh] flex flex-col justify-center items-start mb-20 relative">
-                        <p className="text-neonGreen font-body text-xl md:text-2xl mb-4 h-[32px]">
-                            {/* Live typing subline */}
-                            <Typewriter
-                                words={['> Initialize user session...']}
-                                cursor
-                                typeSpeed={60}
-                            />
-                        </p>
-                        <h1 className="font-heading text-4xl md:text-6xl text-white mb-6 leading-tight min-h-[144px] md:min-h-[160px]">
-                            Hi, I'm <br />
-                            <span className="text-neonGreen text-shadow-neon">
-                                {/* Typewriter for Name */}
+                    <section id="hero" className="min-h-[85vh] flex flex-col md:flex-row justify-between items-center mb-20 relative pt-20 pb-12 gap-8 md:gap-4">
+                        <div className="flex flex-col justify-center items-start w-full md:w-[55%] lg:w-[60%] relative z-20 h-full">
+                            <p className="text-neonGreen font-body text-xl md:text-2xl mb-4 h-[32px]">
+                                {/* Live typing subline */}
                                 <Typewriter
-                                    words={['Apurba Roy']}
-                                    typeSpeed={100}
-                                    deleteSpeed={50}
-                                    delaySpeed={5000}
+                                    words={['> Initialize user session...']}
                                     cursor
-                                    loop
+                                    typeSpeed={60}
                                 />
-                            </span>
-                        </h1>
-                        <h2 className="text-2xl md:text-3xl text-sageGreen font-body mb-6 mt-2 h-[40px]">
-                            {/* Swapping titles */}
-                            <Typewriter
-                                words={['Computer Science Engineer', 'Fullstack Developer', 'AI ML Enthusiast']}
-                                loop
-                                cursor
-                                cursorStyle='_'
-                                typeSpeed={70}
-                                deleteSpeed={50}
-                                delaySpeed={1500}
-                            />
-                        </h2>
+                            </p>
+                            <h1 className="font-heading text-4xl md:text-6xl text-white mb-6 leading-tight min-h-[144px] md:min-h-[160px]">
+                                Hi, I'm <br />
+                                <span className="text-neonGreen text-shadow-neon">
+                                    {/* Typewriter for Name */}
+                                    <Typewriter
+                                        words={['Apurba Roy']}
+                                        typeSpeed={100}
+                                        deleteSpeed={50}
+                                        delaySpeed={5000}
+                                        cursor
+                                        loop
+                                    />
+                                </span>
+                            </h1>
+                            <h2 className="text-2xl md:text-3xl text-sageGreen font-body mb-6 mt-2 h-[40px]">
+                                {/* Swapping titles */}
+                                <Typewriter
+                                    words={['Computer Science Engineer', 'Fullstack Developer', 'AI ML Enthusiast']}
+                                    loop
+                                    cursor
+                                    cursorStyle='_'
+                                    typeSpeed={70}
+                                    deleteSpeed={50}
+                                    delaySpeed={1500}
+                                />
+                            </h2>
 
-                        <div className="flex flex-col gap-4 mb-16 w-full max-w-md">
-                            <div className="flex gap-4 w-full">
-                                <button onClick={() => scrollToSection('portfolio')} className="pixel-btn flex-1 text-center">
-                                    VIEW PROJECTS_
-                                </button>
-                                <button onClick={() => scrollToSection('contact')} className="pixel-btn !bg-transparent !text-sageGreen !border-sageGreen hover:!border-neonGreen hover:!text-neonGreen flex-1 text-center">
-                                    CONTACT ME_
-                                </button>
+                            <div className="flex flex-col gap-4 mb-16 w-full max-w-md">
+                                <div className="flex gap-4 w-full">
+                                    <button onClick={() => scrollToSection('portfolio')} className="pixel-btn flex-1 text-center">
+                                        VIEW PROJECTS_
+                                    </button>
+                                    <button onClick={() => scrollToSection('contact')} className="pixel-btn !bg-transparent !text-sageGreen !border-sageGreen hover:!border-neonGreen hover:!text-neonGreen flex-1 text-center">
+                                        CONTACT ME_
+                                    </button>
+                                </div>
+                                {/* Download CV newly added button */}
+                                <a href="#" download className="pixel-btn !bg-neonGreen/10 w-full text-center hover:bg-neonGreen hover:text-darkGreen transition-all">
+                                    DOWNLOAD MY CV_
+                                </a>
                             </div>
-                            {/* Download CV newly added button */}
-                            <a href="#" download className="pixel-btn !bg-neonGreen/10 w-full text-center hover:bg-neonGreen hover:text-darkGreen transition-all">
-                                DOWNLOAD MY CV_
-                            </a>
+
+                            <div className="flex gap-6 mt-auto border-t border-sageGreen/20 pt-6 w-full max-w-md">
+                                <a href="#" title="GitHub" className="text-sageGreen hover:text-neonGreen hover:shadow-neon transition-colors"><Github size={24} /></a>
+                                <a href="#" title="LinkedIn" className="text-sageGreen hover:text-neonGreen hover:shadow-neon transition-colors"><Linkedin size={24} /></a>
+                                <a href="#" title="Twitter" className="text-sageGreen hover:text-neonGreen hover:shadow-neon transition-colors"><Twitter size={24} /></a>
+                            </div>
                         </div>
 
-                        <div className="flex gap-6 mt-auto border-t border-sageGreen/20 pt-6 w-full max-w-md">
-                            <a href="#" title="GitHub" className="text-sageGreen hover:text-neonGreen hover:shadow-neon transition-colors"><Github size={24} /></a>
-                            <a href="#" title="LinkedIn" className="text-sageGreen hover:text-neonGreen hover:shadow-neon transition-colors"><Linkedin size={24} /></a>
-                            <a href="#" title="Twitter" className="text-sageGreen hover:text-neonGreen hover:shadow-neon transition-colors"><Twitter size={24} /></a>
+                        <div className="w-full md:w-[45%] lg:w-[40%] flex justify-center md:justify-end items-center relative z-10 transition-opacity">
+                            <GlitchAvatar />
                         </div>
                     </section>
 
