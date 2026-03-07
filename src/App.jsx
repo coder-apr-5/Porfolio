@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Github, Linkedin, Instagram, Twitter, Send, ExternalLink, Info, Code, GraduationCap, Briefcase, TerminalSquare, Brain } from 'lucide-react';
 import { Typewriter } from 'react-simple-typewriter';
+import { db } from './firebase.js';
+import { ref, onValue, push, serverTimestamp } from 'firebase/database';
 
 import boyCoding from './assets/boy_coding.png';
 import boyAi from './assets/boy_ai.png';
@@ -184,9 +186,82 @@ export default function App() {
     const [projLimit, setProjLimit] = useState(6);
     const [certLimit, setCertLimit] = useState(6);
 
+    const [contactForm, setContactForm] = useState({ name: '', email: '', message: '' });
+    const [contactStatus, setContactStatus] = useState('');
+    const [logs, setLogs] = useState([]);
+    const [newLog, setNewLog] = useState('');
+    const [logStatus, setLogStatus] = useState('');
+
+    const handleContactSubmit = async (e) => {
+        e.preventDefault();
+        if (!db) { setContactStatus('ERR: NO_DB_CONNECTION'); return; }
+        if (!contactForm.name || !contactForm.email || !contactForm.message) {
+            setContactStatus('ERR: INCOMPLETE_DATA');
+            setTimeout(() => setContactStatus(''), 3000);
+            return;
+        }
+
+        setContactStatus('SENDING...');
+        try {
+            await push(ref(db, 'messages'), {
+                ...contactForm,
+                timestamp: serverTimestamp()
+            });
+            setContactStatus('SUCCESS: MESSAGE_SENT');
+            setContactForm({ name: '', email: '', message: '' });
+            setTimeout(() => setContactStatus(''), 5000);
+        } catch (error) {
+            setContactStatus('ERR: TRANSFER_FAILED');
+            console.error(error);
+            setTimeout(() => setContactStatus(''), 3000);
+        }
+    };
+
+    const handleLogSubmit = async (e) => {
+        e.preventDefault();
+        if (!db) { setLogStatus('ERR: NO_DB'); return; }
+        if (!newLog.trim()) return;
+
+        setLogStatus('POSTING...');
+        try {
+            await push(ref(db, 'public_logs'), {
+                user: 'GUEST_' + Math.floor(Math.random() * 9999),
+                text: newLog,
+                timestamp: serverTimestamp()
+            });
+            setNewLog('');
+            setLogStatus('');
+        } catch (error) {
+            setLogStatus('ERR: POST_FAILED');
+            console.error(error);
+            setTimeout(() => setLogStatus(''), 3000);
+        }
+    };
+
+    useEffect(() => {
+        if (!db) return;
+        const logsRef = ref(db, 'public_logs');
+        const unsubscribe = onValue(logsRef, (snapshot) => {
+            const data = snapshot.val();
+            if (data) {
+                const logsArray = Object.entries(data).map(([id, val]) => ({
+                    id,
+                    ...val
+                })).sort((a, b) => {
+                    const timeA = a.timestamp || 0;
+                    const timeB = b.timestamp || 0;
+                    return timeB - timeA;
+                });
+                setLogs(logsArray);
+            } else {
+                setLogs([]);
+            }
+        });
+        return () => unsubscribe();
+    }, []);
+
     // Live Viewer setup
     const [viewers, setViewers] = useState(0);
-
     useEffect(() => {
         // Start randomly between 12 and 45 viewers
         setViewers(Math.floor(Math.random() * 33) + 12);
@@ -556,22 +631,43 @@ export default function App() {
                             {/* Contact Form */}
                             <div className="border border-neonGreen p-8 bg-darkGreen shadow-neon relative">
                                 <div className="absolute -top-3 left-4 bg-darkGreen px-2 font-heading text-sm text-neonGreen">TRANSMISSION_PROTOCOL</div>
-                                <form className="flex flex-col gap-6" onSubmit={(e) => e.preventDefault()}>
+                                <form className="flex flex-col gap-6" onSubmit={handleContactSubmit}>
                                     <div>
                                         <label className="font-body text-sageGreen mb-2 block">NAME_ID:</label>
-                                        <input type="text" className="w-full bg-transparent border-b border-sageGreen focus:border-neonGreen focus:outline-none text-white py-2 font-body text-lg transition-colors" placeholder="GUEST_USER" />
+                                        <input
+                                            type="text"
+                                            value={contactForm.name}
+                                            onChange={e => setContactForm({ ...contactForm, name: e.target.value })}
+                                            className="w-full bg-transparent border-b border-sageGreen focus:border-neonGreen focus:outline-none text-white py-2 font-body text-lg transition-colors"
+                                            placeholder="GUEST_USER"
+                                        />
                                     </div>
                                     <div>
                                         <label className="font-body text-sageGreen mb-2 block">COMMLINK_URI:</label>
-                                        <input type="email" className="w-full bg-transparent border-b border-sageGreen focus:border-neonGreen focus:outline-none text-white py-2 font-body text-lg transition-colors" placeholder="user@domain.com" />
+                                        <input
+                                            type="email"
+                                            value={contactForm.email}
+                                            onChange={e => setContactForm({ ...contactForm, email: e.target.value })}
+                                            className="w-full bg-transparent border-b border-sageGreen focus:border-neonGreen focus:outline-none text-white py-2 font-body text-lg transition-colors"
+                                            placeholder="user@domain.com"
+                                        />
                                     </div>
                                     <div>
                                         <label className="font-body text-sageGreen mb-2 block">DATA_PAYLOAD:</label>
-                                        <textarea rows="4" className="w-full bg-transparent border border-sageGreen focus:border-neonGreen focus:outline-none text-white p-3 font-body text-lg transition-colors mt-2" placeholder="Enter message parameters here..."></textarea>
+                                        <textarea
+                                            rows="4"
+                                            value={contactForm.message}
+                                            onChange={e => setContactForm({ ...contactForm, message: e.target.value })}
+                                            className="w-full bg-transparent border border-sageGreen focus:border-neonGreen focus:outline-none text-white p-3 font-body text-lg transition-colors mt-2"
+                                            placeholder="Enter message parameters here..."
+                                        ></textarea>
                                     </div>
-                                    <button type="submit" className="pixel-btn flex items-center justify-center gap-3 mt-4">
-                                        <Send size={18} /> INITIATE_TRANSFER
-                                    </button>
+                                    <div className="flex items-center gap-4 mt-4">
+                                        <button type="submit" disabled={contactStatus === 'SENDING...'} className="pixel-btn flex items-center justify-center gap-3 disabled:opacity-50">
+                                            <Send size={18} /> INITIATE_TRANSFER
+                                        </button>
+                                        {contactStatus && <span className="font-heading text-xs text-neonGreen animate-pulse">{contactStatus}</span>}
+                                    </div>
                                 </form>
                             </div>
 
@@ -599,7 +695,7 @@ export default function App() {
                                 <div className="border border-neonGreen/30 p-6 bg-darkGreen">
                                     <div className="flex justify-between items-center mb-6 pb-2 border-b border-sageGreen/20">
                                         <h3 className="font-heading text-sm text-neonGreen">PUBLIC_LOGS</h3>
-                                        <span className="text-sageGreen text-xs font-body">COUNT: 01</span>
+                                        <span className="text-sageGreen text-xs font-body">COUNT: {logs.length.toString().padStart(2, '0')}</span>
                                     </div>
 
                                     <div className="space-y-4 mb-6 max-h-48 overflow-y-auto pr-2">
@@ -610,12 +706,31 @@ export default function App() {
                                             </div>
                                             <p className="text-white font-body text-sm">Welcome to my digital space. Feel free to leave a trace.</p>
                                         </div>
+                                        {logs.map((log) => (
+                                            <div key={log.id} className="border-l-2 border-sageGreen pl-4 py-2 bg-sageGreen/5 animate-fade-in">
+                                                <div className="flex items-center gap-2 mb-1">
+                                                    <span className="font-heading text-xs text-sageGreen">[USER]</span>
+                                                    <span className="text-sageGreen text-xs font-body">{log.user}</span>
+                                                    {log.timestamp && <span className="text-sageGreen/50 text-[10px] font-body"> {new Date(log.timestamp).toLocaleTimeString()}</span>}
+                                                </div>
+                                                <p className="text-white font-body text-sm break-words">{log.text}</p>
+                                            </div>
+                                        ))}
                                     </div>
 
-                                    <div className="flex gap-2">
-                                        <input type="text" placeholder="Add to log..." className="flex-1 bg-transparent border border-sageGreen focus:border-neonGreen focus:outline-none px-3 py-2 text-white font-body text-sm" />
-                                        <button className="bg-neonGreen text-darkGreen px-4 font-heading text-xs hover:shadow-neon transition-shadow">POST</button>
-                                    </div>
+                                    <form onSubmit={handleLogSubmit} className="flex flex-col gap-2">
+                                        <div className="flex gap-2">
+                                            <input
+                                                type="text"
+                                                value={newLog}
+                                                onChange={(e) => setNewLog(e.target.value)}
+                                                placeholder="Add to log..."
+                                                className="flex-1 bg-transparent border border-sageGreen focus:border-neonGreen focus:outline-none px-3 py-2 text-white font-body text-sm"
+                                            />
+                                            <button type="submit" disabled={logStatus === 'POSTING...'} className="bg-neonGreen text-darkGreen px-4 font-heading text-xs hover:shadow-neon transition-shadow disabled:opacity-50">POST</button>
+                                        </div>
+                                        {logStatus && <span className="text-xs text-neonGreen font-heading animate-pulse">{logStatus}</span>}
+                                    </form>
                                 </div>
                             </div>
                         </div>
