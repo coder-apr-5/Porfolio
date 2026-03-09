@@ -65,6 +65,16 @@
   .animate-float {
     animation: float-icon 3s ease-in-out infinite;
   }
+
+  @keyframes solar-orbit {
+    from {
+      transform: rotate(0deg) translateX(var(--orbit-radius)) rotate(0deg);
+    }
+
+    to {
+      transform: rotate(360deg) translateX(var(--orbit-radius)) rotate(-360deg);
+    }
+  }
 }
 
 /* Scrollbar customization */
