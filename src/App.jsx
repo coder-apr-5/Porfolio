@@ -211,18 +211,33 @@ const Intro = ({ onComplete }) => {
   );
 };
 
-const orbitNodes = Array.from({ length: 40 }).map((_, i) => ({
+const rings = [15, 25, 35, 45, 55, 70, 85];
+
+const orbitNodes = Array.from({ length: 35 }).map((_, i) => ({
   id: i,
-  radius: Math.random() * 80 + 10,
-  speed: Math.random() * 80 + 30, // 30s to 110s orbit
+  radius: rings[Math.floor(Math.random() * rings.length)],
+  speed: Math.random() * 60 + 20, // 20s to 80s orbit
   delay: -Math.random() * 100,
-  size: Math.random() * 1.5 + 1,
-  opacity: Math.random() * 0.15 + 0.02,
+  size: Math.random() * 1 + 0.8,
+  opacity: Math.random() * 0.4 + 0.1,
   reverse: Math.random() > 0.5,
 }));
 
 const OrbitBackground = () => (
-  <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden flex items-center justify-center mix-blend-screen opacity-50">
+  <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden flex items-center justify-center mix-blend-screen opacity-40">
+    {/* Draw the Solar System concentric orbit rings */}
+    {rings.map((radius, i) => (
+      <div
+        key={`ring-${i}`}
+        className="absolute border border-neonGreen/10 rounded-full"
+        style={{
+          width: `${radius * 2}vw`,
+          height: `${radius * 2}vw`,
+        }}
+      />
+    ))}
+
+    {/* The roaming </>'s (planets) */}
     {orbitNodes.map((node) => (
       <div
         key={node.id}
@@ -232,6 +247,7 @@ const OrbitBackground = () => (
           animation: `solar-orbit ${node.speed}s linear ${node.delay}s infinite ${node.reverse ? "reverse" : "normal"}`,
           fontSize: `${node.size}rem`,
           opacity: node.opacity,
+          textShadow: `0 0 5px rgba(57,255,20, ${node.opacity})`,
         }}
       >
         &lt;/&gt;
