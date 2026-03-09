@@ -190,11 +190,12 @@ export default function App() {
     const [contactStatus, setContactStatus] = useState('');
     const [logs, setLogs] = useState([]);
     const [newLog, setNewLog] = useState('');
+    const [newLogName, setNewLogName] = useState('');
     const [logStatus, setLogStatus] = useState('');
 
     const handleContactSubmit = async (e) => {
         e.preventDefault();
-        if (!db) { setContactStatus('ERR: NO_DB_CONNECTION'); return; }
+        // if (!db) { setContactStatus('ERR: NO_DB_CONNECTION'); return; } // Commented out to allow form submission even without Firebase set up.
         if (!contactForm.name || !contactForm.email || !contactForm.message) {
             setContactStatus('ERR: INCOMPLETE_DATA');
             setTimeout(() => setContactStatus(''), 3000);
@@ -203,13 +204,39 @@ export default function App() {
 
         setContactStatus('SENDING...');
         try {
-            await push(ref(db, 'messages'), {
-                ...contactForm,
-                timestamp: serverTimestamp()
+            // --- 1. OPTIONAL: Save to Firebase Database (you can keep this or remove it) ---
+            if (db) {
+                await push(ref(db, 'messages'), {
+                    ...contactForm,
+                    timestamp: serverTimestamp()
+                }).catch(err => console.log('Firebase Save Error (Ignoring):', err));
+            }
+
+            // --- 2. NEW: Send an actual Email via Formspree ---
+            const res = await fetch("https://formspree.io/f/xjgagkzo", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    Accept: "application/json",
+                },
+                body: JSON.stringify({
+                    name: contactForm.name,
+                    email: contactForm.email,
+                    message: contactForm.message,
+                }),
             });
-            setContactStatus('SUCCESS: MESSAGE_SENT');
-            setContactForm({ name: '', email: '', message: '' });
-            setTimeout(() => setContactStatus(''), 5000);
+
+            const result = await res.json();
+
+            if (res.ok) {
+                setContactStatus('SUCCESS: MESSAGE_SENT');
+                setContactForm({ name: '', email: '', message: '' });
+                setTimeout(() => setContactStatus(''), 5000);
+            } else {
+                setContactStatus('ERR: API_REJECTED');
+                setTimeout(() => setContactStatus(''), 3000);
+            }
+
         } catch (error) {
             setContactStatus('ERR: TRANSFER_FAILED');
             console.error(error);
@@ -225,11 +252,12 @@ export default function App() {
         setLogStatus('POSTING...');
         try {
             await push(ref(db, 'public_logs'), {
-                user: 'GUEST_' + Math.floor(Math.random() * 9999),
+                user: newLogName.trim() || ('GUEST_' + Math.floor(Math.random() * 9999)),
                 text: newLog,
                 timestamp: serverTimestamp()
             });
             setNewLog('');
+            setNewLogName('');
             setLogStatus('');
         } catch (error) {
             setLogStatus('ERR: POST_FAILED');
@@ -699,19 +727,17 @@ export default function App() {
                                     </div>
 
                                     <div className="space-y-4 mb-6 max-h-48 overflow-y-auto pr-2">
-                                        <div className="border-l-2 border-neonGreen pl-4 py-2 bg-neonGreen/5">
-                                            <div className="flex items-center gap-2 mb-1">
-                                                <span className="font-heading text-xs text-neonGreen">[ADMIN]</span>
-                                                <span className="text-sageGreen text-xs font-body">SYS_OP</span>
+                                        <div className="border-l-2 border-neonGreen pl-4 py-3 bg-neonGreen/5">
+                                            <div className="flex justify-between items-start mb-2">
+                                                <span className="font-heading text-sm text-neonGreen">SYS_OP [ADMIN]</span>
                                             </div>
                                             <p className="text-white font-body text-sm">Welcome to my digital space. Feel free to leave a trace.</p>
                                         </div>
                                         {logs.map((log) => (
-                                            <div key={log.id} className="border-l-2 border-sageGreen pl-4 py-2 bg-sageGreen/5 animate-fade-in">
-                                                <div className="flex items-center gap-2 mb-1">
-                                                    <span className="font-heading text-xs text-sageGreen">[USER]</span>
-                                                    <span className="text-sageGreen text-xs font-body">{log.user}</span>
-                                                    {log.timestamp && <span className="text-sageGreen/50 text-[10px] font-body"> {new Date(log.timestamp).toLocaleTimeString()}</span>}
+                                            <div key={log.id} className="border-l-2 border-sageGreen pl-4 py-3 bg-sageGreen/5 animate-fade-in relative">
+                                                <div className="flex justify-between items-center mb-2">
+                                                    <span className="font-heading text-sm sm:text-base text-neonGreen uppercase break-all pr-4">{log.user}</span>
+                                                    {log.timestamp && <span className="text-sageGreen text-sm font-sans tracking-wide whitespace-nowrap opacity-90">{new Date(log.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>}
                                                 </div>
                                                 <p className="text-white font-body text-sm break-words">{log.text}</p>
                                             </div>
@@ -720,6 +746,13 @@ export default function App() {
 
                                     <form onSubmit={handleLogSubmit} className="flex flex-col gap-2">
                                         <div className="flex gap-2">
+                                            <input
+                                                type="text"
+                                                value={newLogName}
+                                                onChange={(e) => setNewLogName(e.target.value)}
+                                                placeholder="Your Name (Optional)"
+                                                className="w-1/3 bg-transparent border border-sageGreen focus:border-neonGreen focus:outline-none px-3 py-2 text-white font-body text-sm"
+                                            />
                                             <input
                                                 type="text"
                                                 value={newLog}
