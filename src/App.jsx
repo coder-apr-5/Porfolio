@@ -28,6 +28,8 @@ import boyCoding from "./assets/boy_coding.png";
 import boyAi from "./assets/boy_ai.png";
 import boySleeping from "./assets/boy_sleeping.png";
 import boyHoodie from "./assets/boy_hoodie.png";
+import ElderGuardAI from "./assets/ElderGuardAI.png";
+import PrivaSeal from "./assets/PrivaSeal.png";
 
 const NavItem = ({ section, current, onClick }) => (
   <button
@@ -516,14 +518,14 @@ export default function App() {
 
   const projects = [
     {
-      title: "RetroArcade",
-      desc: "A browser-based retro 8-bit game engine.",
-      img: "https://via.placeholder.com/400x250/0a1a0f/39ff14?text=RetroArcade",
+      title: "ElderGuardAI",
+      desc: "Predict. Protect. Prevent.",
+      img: ElderGuardAI,
     },
     {
-      title: "NeoChat",
-      desc: "Real-time terminal style encrypted chat app.",
-      img: "https://via.placeholder.com/400x250/0a1a0f/39ff14?text=NeoChat",
+      title: "PrivaSeal",
+      desc: "Verify Anything. Reveal Nothing.",
+      img: PrivaSeal,
     },
     {
       title: "GreenWallet",
