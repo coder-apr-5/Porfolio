@@ -226,12 +226,12 @@ const orbitNodes = Array.from({ length: 35 }).map((_, i) => ({
 }));
 
 const OrbitBackground = () => (
-  <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden flex items-center justify-center mix-blend-screen opacity-40">
+  <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden flex items-center justify-center mix-blend-screen opacity-80">
     {/* Draw the Solar System concentric orbit rings */}
     {rings.map((radius, i) => (
       <div
         key={`ring-${i}`}
-        className="absolute border border-neonGreen/10 rounded-full"
+        className="absolute border border-sageGreen/50 rounded-full"
         style={{
           width: `${radius * 2}vw`,
           height: `${radius * 2}vw`,
