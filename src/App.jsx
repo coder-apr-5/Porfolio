@@ -226,35 +226,50 @@ const orbitNodes = Array.from({ length: 35 }).map((_, i) => ({
 }));
 
 const OrbitBackground = () => (
-  <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden flex items-center justify-center mix-blend-screen opacity-80">
-    {/* Draw the Solar System concentric orbit rings */}
-    {rings.map((radius, i) => (
-      <div
-        key={`ring-${i}`}
-        className="absolute border border-sageGreen/50 rounded-full"
-        style={{
-          width: `${radius * 2}vw`,
-          height: `${radius * 2}vw`,
-        }}
-      />
-    ))}
+  <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden flex items-center justify-center opacity-90"
+       style={{ perspective: '1200px' }}>
+    <div className="relative w-full h-full flex items-center justify-center"
+         style={{ transformStyle: 'preserve-3d', transform: 'rotateX(70deg)' }}>
+      {/* Draw the Solar System concentric orbit rings */}
+      {rings.map((radius, i) => (
+        <div
+          key={`ring-${i}`}
+          className="absolute border border-sageGreen/30 rounded-full"
+          style={{
+            width: `${radius * 2}vw`,
+            height: `${radius * 2}vw`,
+            transform: 'translateZ(-1px)',
+          }}
+        />
+      ))}
 
-    {/* The roaming </>'s (planets) */}
-    {orbitNodes.map((node) => (
-      <div
-        key={node.id}
-        className="absolute font-heading text-neonGreen select-none"
-        style={{
-          "--orbit-radius": `${node.radius}vw`,
-          animation: `solar-orbit ${node.speed}s linear ${node.delay}s infinite ${node.reverse ? "reverse" : "normal"}`,
-          fontSize: `${node.size}rem`,
-          opacity: node.opacity,
-          textShadow: `0 0 5px rgba(57,255,20, ${node.opacity})`,
-        }}
-      >
-        &lt;/&gt;
-      </div>
-    ))}
+      {/* The roaming </>'s (planets) */}
+      {orbitNodes.map((node) => (
+        <div
+          key={node.id}
+          className="absolute flex items-center justify-center pointer-events-none"
+          style={{
+            "--orbit-radius": `${node.radius}vw`,
+            animation: `solar-orbit ${node.speed}s linear ${node.delay}s infinite ${node.reverse ? "reverse" : "normal"}`,
+            transformStyle: 'preserve-3d',
+            zIndex: 10,
+          }}
+        >
+          <div
+            className="planet-circle pointer-events-auto flex items-center justify-center font-heading select-none transition-all duration-300"
+            style={{
+              fontSize: `${node.size * 0.9}rem`,
+              width: `${node.size * 2.8}rem`,
+              height: `${node.size * 2.8}rem`,
+              color: `rgba(57, 255, 20, ${Math.min(node.opacity + 0.4, 1)})`,
+              opacity: Math.min(node.opacity + 0.4, 1),
+            }}
+          >
+            &lt;/&gt;
+          </div>
+        </div>
+      ))}
+    </div>
   </div>
 );
 
