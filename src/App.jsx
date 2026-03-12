@@ -215,15 +215,32 @@ const Intro = ({ onComplete }) => {
 
 const rings = [15, 25, 35, 45, 55, 70, 85];
 
-const orbitNodes = Array.from({ length: 35 }).map((_, i) => ({
-  id: i,
-  radius: rings[Math.floor(Math.random() * rings.length)],
-  speed: Math.random() * 60 + 20, // 20s to 80s orbit
-  delay: -Math.random() * 100,
-  size: Math.random() * 1 + 0.8,
-  opacity: Math.random() * 0.4 + 0.1,
-  reverse: Math.random() > 0.5,
-}));
+const orbitNodes = (() => {
+  const nodes = [];
+  let idCounter = 0;
+
+  rings.forEach((radius) => {
+    // Both planets on the same ring must have the same speed and direction to never clash
+    const speed = Math.random() * 60 + 20; // 20s to 80s orbit
+    const reverse = Math.random() > 0.5;
+    
+    // Create exactly 2 planets per axis
+    for (let j = 0; j < 2; j++) {
+      nodes.push({
+        id: idCounter++,
+        radius: radius,
+        speed: speed,
+        // Start one at 0 and one exactly halfway through the orbit (180 degrees)
+        delay: j === 0 ? 0 : -(speed / 2),
+        size: Math.random() * 1 + 0.8,
+        opacity: Math.random() * 0.4 + 0.1,
+        reverse: reverse,
+      });
+    }
+  });
+
+  return nodes;
+})();
 
 const OrbitBackground = () => (
   <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden flex items-center justify-center opacity-90"
