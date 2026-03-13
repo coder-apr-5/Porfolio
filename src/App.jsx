@@ -273,7 +273,7 @@ const OrbitBackground = () => (
           }}
         >
           <div
-            className="planet-circle pointer-events-auto flex items-center justify-center font-heading select-none transition-all duration-300"
+            className="planet-circle pointer-events-auto flex items-center justify-center font-heading select-none transition-all duration-300 relative group"
             style={{
               fontSize: `${node.size * 0.9}rem`,
               width: `${node.size * 2.8}rem`,
@@ -282,7 +282,20 @@ const OrbitBackground = () => (
               opacity: Math.min(node.opacity + 0.4, 1),
             }}
           >
-            <div style={{ animation: `planet-spin ${node.speed * 0.4}s linear infinite` }} className="flex w-full h-full items-center justify-center">
+            {/* 3D scrolling meridian lines that make the ball look like it's rotating on its surface */}
+            <div 
+              className="absolute inset-0 pointer-events-none opacity-40 mix-blend-lighten"
+              style={{
+                backgroundImage: 'repeating-linear-gradient(90deg, transparent 0, transparent 20%, rgba(57, 255, 20, 0.4) 20%, rgba(57, 255, 20, 0.4) 24%)',
+                backgroundSize: '200% 100%',
+                animation: `planet-pan ${node.speed * 0.4}s linear infinite`
+              }}
+            />
+            
+            {/* Overlaid static glossy 3D glare for spherical volume */}
+            <div className="absolute inset-0 pointer-events-none rounded-full bg-[radial-gradient(circle_at_30%_30%,rgba(57,255,20,0.25)_0%,transparent_60%)] group-hover:bg-[radial-gradient(circle_at_30%_30%,rgba(57,255,20,0.5)_0%,transparent_70%)] transition-colors duration-300 z-10" style={{ boxShadow: 'inset -8px -8px 16px rgba(0,0,0,0.95), inset 2px 2px 5px rgba(255,255,255,0.15)' }}></div>
+
+            <div style={{ animation: `planet-spin ${node.speed * 0.4}s linear infinite` }} className="planet-text flex w-full h-full items-center justify-center relative z-20 transition-colors duration-300">
               &lt;/&gt;
             </div>
           </div>
