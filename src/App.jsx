@@ -222,7 +222,7 @@ const orbitNodes = (() => {
   rings.forEach((radius) => {
     // Both planets on the same ring must have the same speed and direction to never clash
     const speed = Math.random() * 60 + 20; // 20s to 80s orbit
-    const reverse = Math.random() > 0.5;
+    const reverse = true; // Revolve right to left
     
     // Create exactly 2 planets per axis
     for (let j = 0; j < 2; j++) {
@@ -282,7 +282,9 @@ const OrbitBackground = () => (
               opacity: Math.min(node.opacity + 0.4, 1),
             }}
           >
-            &lt;/&gt;
+            <div style={{ animation: `planet-spin ${node.speed * 0.4}s linear infinite` }} className="flex w-full h-full items-center justify-center">
+              &lt;/&gt;
+            </div>
           </div>
         </div>
       ))}

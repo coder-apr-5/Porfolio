@@ -76,6 +76,15 @@
     }
   }
 
+  @keyframes planet-spin {
+    from {
+      transform: rotateY(0deg);
+    }
+    to {
+      transform: rotateY(-360deg);
+    }
+  }
+
   .planet-circle {
     border-radius: 50%;
     background: radial-gradient(circle at 35% 35%, rgba(57, 255, 20, 0.15) 0%, rgba(10, 26, 15, 0.95) 75%);
