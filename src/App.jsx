@@ -465,7 +465,7 @@ export default function App() {
     { id: "about", label: "ABOUT" },
     { id: "portfolio", label: "PORTFOLIO" },
     { id: "education", label: "EDUCATION" },
-    { id: "achievements", label: "ACHIEVEMENTS" },
+    { id: "experience", label: "WORK EXPERIENCE" },
     { id: "contact", label: "CONTACT" },
   ];
 
@@ -519,7 +519,7 @@ export default function App() {
     },
   ];
 
-  const achievData = [
+  const expData = [
     {
       title: "1st Place AI Hackathon",
       year: "2023",
@@ -537,6 +537,39 @@ export default function App() {
       year: "2022",
       description:
         "Awarded during the university coding cup for complex data structure optimization.",
+    },
+  ];
+
+  const achievData = [
+    {
+      title: "AI Engineers Day",
+      desc: "Participated and showcased innovative AI solutions at emergent venue.",
+      img: "https://via.placeholder.com/400x250/0a1a0f/39ff14?text=AI+Engineers+Day",
+    },
+    {
+      title: "Vibehack",
+      desc: "Hackathon in collaboration with emergent & OpenAI.",
+      img: "https://via.placeholder.com/400x250/0a1a0f/39ff14?text=Vibehack",
+    },
+    {
+      title: "Buildathon",
+      desc: "Built scalable web applications over an intense 48-hour development sprint.",
+      img: "https://via.placeholder.com/400x250/0a1a0f/39ff14?text=Buildathon",
+    },
+    {
+      title: "Vibeathon",
+      desc: "Creative hackathon focusing on AI UI/UX interfaces and smooth futuristic vibes.",
+      img: "https://via.placeholder.com/400x250/0a1a0f/39ff14?text=Vibeathon",
+    },
+    {
+      title: "Constellation",
+      desc: "Global AI and Tech conference discussing neural architecture breakthroughs.",
+      img: "https://via.placeholder.com/400x250/0a1a0f/39ff14?text=Constellation",
+    },
+    {
+      title: "MLH Hack Days",
+      desc: "Major League Hacking premier global competitive event.",
+      img: "https://via.placeholder.com/400x250/0a1a0f/39ff14?text=MLH",
     },
   ];
 
@@ -865,7 +898,7 @@ export default function App() {
 
             {/* Tabbed Navigation */}
             <div className="flex justify-center flex-wrap gap-4 mb-12 border-b border-sageGreen/30 pb-4">
-              {["projects", "certificates", "stack"].map((tab) => (
+              {["projects", "certificates", "achievements", "stack"].map((tab) => (
                 <button
                   key={tab}
                   onClick={() => setActiveTab(tab)}
@@ -960,6 +993,36 @@ export default function App() {
               </div>
             )}
 
+            {/* Achievements Grid */}
+            {activeTab === "achievements" && (
+              <div className="flex flex-col items-center">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full">
+                  {achievData.map((achiev, i) => (
+                    <div
+                      key={i}
+                      className="group border border-sageGreen bg-darkGreen overflow-hidden hover:border-neonGreen transition-all duration-300"
+                    >
+                      <div className="border-b border-sageGreen group-hover:border-neonGreen overflow-hidden">
+                        <img
+                          src={achiev.img}
+                          alt={achiev.title}
+                          className="w-full h-48 object-cover opacity-60 group-hover:opacity-100 transition-all duration-500"
+                        />
+                      </div>
+                      <div className="p-6">
+                        <h3 className="font-heading text-sageGreen group-hover:text-neonGreen transition-colors text-lg mb-2">
+                          {achiev.title}
+                        </h3>
+                        <p className="font-body text-sageGreen mb-4 h-12">
+                          {achiev.desc}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
+
             {/* Tech Stack Grid */}
             {activeTab === "stack" && (
               <div className="flex justify-center">
@@ -999,23 +1062,23 @@ export default function App() {
             </div>
           </section>
 
-          {/* ACHIEVEMENTS */}
+          {/* WORK EXPERIENCE */}
           <section
-            id="achievements"
+            id="experience"
             className="py-20 mb-20 border-t border-neonGreen/20"
           >
             <div className="flex items-center gap-4 mb-16">
               <h2 className="font-heading text-3xl text-neonGreen text-shadow-neon">
-                &gt; ACHIEVEMENTS
+                &gt; WORK EXPERIENCE
               </h2>
               <div className="h-px bg-neonGreen/30 flex-grow"></div>
             </div>
 
             <div className="relative container mx-auto px-6 flex flex-col space-y-8">
               <div className="absolute z-0 w-1 bg-neonGreen/50 shadow-neon h-full md:left-1/2 md:transform md:-translate-x-1/2 left-6 ml-[13px] md:ml-0"></div>
-              {achievData.map((item, index) => (
+              {expData.map((item, index) => (
                 <TimelineItem
-                  key={"ach" + index}
+                  key={"exp" + index}
                   item={item}
                   index={index + 1}
                 /> /* Add 1 to offset start alignment */
