@@ -1250,6 +1250,7 @@ export default function App() {
                             </span>
                             {log.timestamp && (
                               <span className="text-sageGreen text-sm font-sans tracking-wide whitespace-nowrap opacity-90">
+                                {new Date(log.timestamp).toLocaleDateString()}{" "}
                                 {new Date(log.timestamp).toLocaleTimeString(
                                   [],
                                   { hour: "2-digit", minute: "2-digit" },
