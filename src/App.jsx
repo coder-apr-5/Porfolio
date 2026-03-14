@@ -43,10 +43,29 @@ const NavItem = ({ section, current, onClick }) => (
 const GlitchAvatar = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isGlitching, setIsGlitching] = useState(false);
+  const [timeStr, setTimeStr] = useState("");
 
   const avatars = [boyCoding, boyAi, boySleeping, boyHoodie];
 
   useEffect(() => {
+    const updateTime = () => {
+      const now = new Date();
+      const tzOptions = {
+        timeZoneName: "short",
+        hour12: false,
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+      };
+      const formatted = new Intl.DateTimeFormat("en-US", tzOptions).format(
+        now,
+      );
+      setTimeStr(`SYS_OP_TIME: ${formatted}`);
+    };
+
+    updateTime();
+    const clockInterval = setInterval(updateTime, 1000);
+
     const interval = setInterval(() => {
       setIsGlitching(true);
 
@@ -61,11 +80,17 @@ const GlitchAvatar = () => {
 
     return () => {
       clearInterval(interval);
+      clearInterval(clockInterval);
     };
   }, []);
 
   return (
-    <div className="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 border-2 border-neonGreen bg-darkGreen shadow-[0_0_15px_rgba(57,255,20,0.3)] mx-auto md:ml-auto md:mr-0 group z-10 p-2 mt-12 md:mt-0 flex-shrink-0">
+    <div className="flex flex-col items-center md:items-end z-10 p-2 mt-12 md:mt-0 flex-shrink-0 mx-auto md:ml-auto md:mr-0">
+      <div className="font-heading text-neonGreen text-[10px] md:text-xs tracking-widest bg-darkGreen/80 border border-neonGreen/30 px-3 py-1.5 mb-4 shadow-[0_0_10px_rgba(57,255,20,0.1)] inline-flex items-center gap-2">
+        <span className="w-1.5 h-1.5 rounded-full bg-neonGreen animate-pulse"></span>
+        {timeStr}
+      </div>
+      <div className="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 border-2 border-neonGreen bg-darkGreen shadow-[0_0_15px_rgba(57,255,20,0.3)] group">
       <div
         className={`glitch-wrapper relative w-full h-full overflow-hidden border border-sageGreen/50 ${isGlitching ? "is-glitching" : ""}`}
       >
@@ -98,6 +123,7 @@ const GlitchAvatar = () => {
             backgroundSize: "100% 4px",
           }}
         ></div>
+      </div>
       </div>
     </div>
   );
