@@ -709,9 +709,25 @@ export default function App() {
               ))}
             </nav>
           </div>
+          <div className="bg-neonGreen/5 border-t border-neonGreen/10 py-2 overflow-hidden">
+            <div className="flex animate-marquee whitespace-nowrap text-[10px] md:text-xs font-heading text-neonGreen/80 tracking-widest uppercase items-center">
+              <span className="mx-4">
+                Full Stack Developer with GenAI || 2x Hackathon Winner ||
+                NSAC Global Nominee’24 || Built PWA & apps serving 1k+ users ||
+                Having 8+ Real World - Real Time Live Project || 5+ Open Source
+                Projects
+              </span>
+              <span className="mx-4">
+                Full Stack Developer with GenAI || 2x Hackathon Winner ||
+                NSAC Global Nominee’24 || Built PWA & apps serving 1k+ users ||
+                Having 8+ Real World - Real Time Live Project || 5+ Open Source
+                Projects
+              </span>
+            </div>
+          </div>
         </header>
 
-        <main className="pt-24 pb-12 max-w-6xl mx-auto px-6 overflow-hidden">
+        <main className="pt-32 pb-12 max-w-6xl mx-auto px-6 overflow-hidden">
           {/* HERO SECTION */}
           <section
             id="hero"
