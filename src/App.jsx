@@ -30,6 +30,8 @@ import boySleeping from "./assets/boy_sleeping.png";
 import boyHoodie from "./assets/boy_hoodie.png";
 import ElderGuardAI from "./assets/ElderGuardAI.png";
 import PrivaSeal from "./assets/PrivaSeal.png";
+import AIInterviewCoach from "./assets/AIInterviewCoach.png";
+
 
 const NavItem = ({ section, current, onClick }) => (
   <button
@@ -614,9 +616,9 @@ export default function App() {
       img: PrivaSeal,
     },
     {
-      title: "GreenWallet",
-      desc: "Crypto portfolio dashboard with vintage vibes.",
-      img: "https://via.placeholder.com/400x250/0a1a0f/39ff14?text=GreenWallet",
+      title: "AI Interview Coach",
+      desc: "Your Future Starts Here. Personalized AI coaching.",
+      img: AIInterviewCoach,
     },
     {
       title: "AI Image Gen",
@@ -904,7 +906,7 @@ export default function App() {
 
             {/* Tabbed Navigation */}
             <div className="flex justify-center flex-wrap gap-4 mb-12 border-b border-sageGreen/30 pb-4">
-              {["projects", "certificates", "achievements", "stack"].map((tab) => (
+              {["projects", "certificates", "stack"].map((tab) => (
                 <button
                   key={tab}
                   onClick={() => setActiveTab(tab)}
@@ -999,36 +1001,6 @@ export default function App() {
               </div>
             )}
 
-            {/* Achievements Grid */}
-            {activeTab === "achievements" && (
-              <div className="flex flex-col items-center">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full">
-                  {achievData.map((achiev, i) => (
-                    <div
-                      key={i}
-                      className="group border border-sageGreen bg-darkGreen overflow-hidden hover:border-neonGreen transition-all duration-300"
-                    >
-                      <div className="border-b border-sageGreen group-hover:border-neonGreen overflow-hidden">
-                        <img
-                          src={achiev.img}
-                          alt={achiev.title}
-                          className="w-full h-48 object-cover opacity-60 group-hover:opacity-100 transition-all duration-500"
-                        />
-                      </div>
-                      <div className="p-6">
-                        <h3 className="font-heading text-sageGreen group-hover:text-neonGreen transition-colors text-lg mb-2">
-                          {achiev.title}
-                        </h3>
-                        <p className="font-body text-sageGreen mb-4 h-12">
-                          {achiev.desc}
-                        </p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
-
             {/* Tech Stack Grid */}
             {activeTab === "stack" && (
               <div className="flex justify-center">
@@ -1047,6 +1019,47 @@ export default function App() {
               </div>
             )}
           </section>
+
+          {/* ACHIEVEMENTS MARQUEE */}
+          <section
+            id="achievements"
+            className="py-20 mb-20 border-t border-neonGreen/20 overflow-hidden"
+          >
+            <div className="flex items-center gap-4 mb-12">
+              <h2 className="font-heading text-3xl text-neonGreen text-shadow-neon">
+                &gt; ACHIEVEMENTS
+              </h2>
+              <div className="h-px bg-neonGreen/30 flex-grow"></div>
+            </div>
+
+            <div className="relative w-full overflow-hidden group">
+              <div className="flex animate-marquee whitespace-nowrap">
+                {[...achievData.slice(0, 5), ...achievData.slice(0, 5)].map((achiev, i) => (
+                  <div
+                    key={i}
+                    className="inline-block w-80 flex-shrink-0 mx-4 group/card border border-sageGreen bg-darkGreen overflow-hidden hover:border-neonGreen transition-all duration-300 transform hover:-translate-y-2"
+                  >
+                    <div className="border-b border-sageGreen group-hover/card:border-neonGreen overflow-hidden">
+                      <img
+                        src={achiev.img}
+                        alt={achiev.title}
+                        className="w-full h-40 object-cover opacity-60 group-hover/card:opacity-100 transition-all duration-500"
+                      />
+                    </div>
+                    <div className="p-6 whitespace-normal">
+                      <h3 className="font-heading text-sageGreen group-hover/card:text-neonGreen transition-colors text-lg mb-2">
+                        {achiev.title}
+                      </h3>
+                      <p className="font-body text-sageGreen text-sm mb-4 h-16 overflow-hidden line-clamp-3">
+                        {achiev.desc}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+
 
           {/* EDUCATION TIMELINE */}
           <section
