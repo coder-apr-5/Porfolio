@@ -31,6 +31,10 @@ import boyHoodie from "./assets/boy_hoodie.png";
 import ElderGuardAI from "./assets/ElderGuardAI.png";
 import PrivaSeal from "./assets/PrivaSeal.png";
 import AIInterviewCoach from "./assets/AIInterviewCoach.png";
+import IITKGP from "./assets/IITKGP.png";
+import HackathonWin from "./assets/HackathonWin.png";
+import WinnerCert from "./assets/WinnerCert.png";
+
 
 
 const NavItem = ({ section, current, onClick }) => (
@@ -550,6 +554,21 @@ export default function App() {
 
   const achievData = [
     {
+      title: "IIT Kharagpur Visitor",
+      desc: "A momentous visit to the Indian Institute of Technology, Kharagpur, witnessing the pinnacle of engineering excellence.",
+      img: IITKGP,
+    },
+    {
+      title: "Hackathon Champion",
+      desc: "Proudly standing with the winning trophy after a grueling tech competition among top developers.",
+      img: HackathonWin,
+    },
+    {
+      title: "Winner Recognition",
+      desc: "Officially recognized as the winner with a certificate of excellence for innovative solutions.",
+      img: WinnerCert,
+    },
+    {
       title: "AI Engineers Day",
       desc: "Participated and showcased innovative AI solutions at emergent venue.",
       img: "https://via.placeholder.com/400x250/0a1a0f/39ff14?text=AI+Engineers+Day",
@@ -580,6 +599,7 @@ export default function App() {
       img: "https://via.placeholder.com/400x250/0a1a0f/39ff14?text=MLH",
     },
   ];
+
 
   const techStacks = [
     { name: "Java", icon: "devicon-java-plain" },
@@ -1050,7 +1070,7 @@ export default function App() {
 
             <div className="relative w-full overflow-hidden group">
               <div className="flex animate-marquee whitespace-nowrap">
-                {[...achievData.slice(0, 5), ...achievData.slice(0, 5)].map((achiev, i) => (
+                {[...achievData, ...achievData].map((achiev, i) => (
                   <div
                     key={i}
                     className="inline-block w-80 flex-shrink-0 mx-4 group/card border border-sageGreen bg-darkGreen overflow-hidden hover:border-neonGreen transition-all duration-300 transform hover:-translate-y-2"
