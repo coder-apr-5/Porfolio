@@ -34,6 +34,8 @@ import AIInterviewCoach from "./assets/AIInterviewCoach.png";
 import IITKGP from "./assets/IITKGP.png";
 import HackathonWin from "./assets/HackathonWin.png";
 import WinnerCert from "./assets/WinnerCert.png";
+import NSACNominee from "./assets/NSAC.png";
+
 
 
 
@@ -569,7 +571,13 @@ export default function App() {
       img: WinnerCert,
     },
     {
+      title: "NSAC Global Nominee '24",
+      desc: "Proud to be a Global Nominee for the NASA Space Apps Challenge 2024 with team Super Coders.",
+      img: NSACNominee,
+    },
+    {
       title: "AI Engineers Day",
+
       desc: "Participated and showcased innovative AI solutions at emergent venue.",
       img: "https://via.placeholder.com/400x250/0a1a0f/39ff14?text=AI+Engineers+Day",
     },
