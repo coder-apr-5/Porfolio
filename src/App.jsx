@@ -31,10 +31,16 @@ import boyHoodie from "./assets/boy_hoodie.png";
 import ElderGuardAI from "./assets/ElderGuardAI.png";
 import PrivaSeal from "./assets/PrivaSeal.png";
 import AIInterviewCoach from "./assets/AIInterviewCoach.png";
-import IITKGP from "./assets/IITKGP.png";
-import HackathonWin from "./assets/HackathonWin.png";
-import WinnerCert from "./assets/WinnerCert.png";
-import NSACNominee from "./assets/NSAC.png";
+// import IITKGP from "./assets/IITKGP.png";
+// import HackathonWin from "./assets/HackathonWin.png";
+// import WinnerCert from "./assets/WinnerCert.png";
+// import NSACNominee from "./assets/NSAC.png";
+
+const IITKGP = "https://via.placeholder.com/800x600/0a1a0f/39ff14?text=IIT+KGP";
+const HackathonWin = "https://via.placeholder.com/800x600/0a1a0f/39ff14?text=Winner+Trophy";
+const WinnerCert = "https://via.placeholder.com/800x600/0a1a0f/39ff14?text=Achievement+Certificate";
+const NSACNominee = "https://via.placeholder.com/800x600/0a1a0f/39ff14?text=NSAC+Nominee";
+
 
 
 
@@ -79,39 +85,39 @@ const GlitchAvatar = () => {
         BASE_LOC: INDIA (IST)
       </div>
       <div className="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 border-2 border-neonGreen bg-darkGreen shadow-[0_0_15px_rgba(57,255,20,0.3)] group">
-      <div
-        className={`glitch-wrapper relative w-full h-full overflow-hidden border border-sageGreen/50 ${isGlitching ? "is-glitching" : ""}`}
-      >
-        <div className="glitch-img-container w-full h-full relative">
-          <img
-            src={avatars[currentIndex]}
-            alt="avatar"
-            className="w-full h-full object-cover"
-          />
-
-          {isGlitching && (
-            <>
-              <div
-                className="glitch-layer glitch-layer-1 absolute inset-0 bg-cover bg-center"
-                style={{ backgroundImage: `url(${avatars[currentIndex]})` }}
-              />
-              <div
-                className="glitch-layer glitch-layer-2 absolute inset-0 bg-cover bg-center"
-                style={{ backgroundImage: `url(${avatars[currentIndex]})` }}
-              />
-            </>
-          )}
-        </div>
-
         <div
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            backgroundImage:
-              "linear-gradient(rgba(57, 255, 20, 0.1) 1px, transparent 1px)",
-            backgroundSize: "100% 4px",
-          }}
-        ></div>
-      </div>
+          className={`glitch-wrapper relative w-full h-full overflow-hidden border border-sageGreen/50 ${isGlitching ? "is-glitching" : ""}`}
+        >
+          <div className="glitch-img-container w-full h-full relative">
+            <img
+              src={avatars[currentIndex]}
+              alt="avatar"
+              className="w-full h-full object-cover"
+            />
+
+            {isGlitching && (
+              <>
+                <div
+                  className="glitch-layer glitch-layer-1 absolute inset-0 bg-cover bg-center"
+                  style={{ backgroundImage: `url(${avatars[currentIndex]})` }}
+                />
+                <div
+                  className="glitch-layer glitch-layer-2 absolute inset-0 bg-cover bg-center"
+                  style={{ backgroundImage: `url(${avatars[currentIndex]})` }}
+                />
+              </>
+            )}
+          </div>
+
+          <div
+            className="absolute inset-0 pointer-events-none"
+            style={{
+              backgroundImage:
+                "linear-gradient(rgba(57, 255, 20, 0.1) 1px, transparent 1px)",
+              backgroundSize: "100% 4px",
+            }}
+          ></div>
+        </div>
       </div>
     </div>
   );
@@ -237,7 +243,7 @@ const orbitNodes = (() => {
     // Both planets on the same ring must have the same speed and direction to never clash
     const speed = Math.random() * 60 + 20; // 20s to 80s orbit
     const reverse = true; // Revolve right to left
-    
+
     // Create exactly 2 planets per axis
     for (let j = 0; j < 2; j++) {
       nodes.push({
@@ -258,9 +264,9 @@ const orbitNodes = (() => {
 
 const OrbitBackground = () => (
   <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden flex items-center justify-center opacity-90"
-       style={{ perspective: '1200px' }}>
+    style={{ perspective: '1200px' }}>
     <div className="relative w-full h-full flex items-center justify-center"
-         style={{ transformStyle: 'preserve-3d', transform: 'rotateX(70deg)' }}>
+      style={{ transformStyle: 'preserve-3d', transform: 'rotateX(70deg)' }}>
       {/* Draw the Solar System concentric orbit rings */}
       {rings.map((radius, i) => (
         <div
@@ -297,7 +303,7 @@ const OrbitBackground = () => (
             }}
           >
             {/* 3D scrolling meridian lines that make the ball look like it's rotating on its surface */}
-            <div 
+            <div
               className="absolute inset-0 pointer-events-none opacity-40 mix-blend-lighten"
               style={{
                 backgroundImage: 'repeating-linear-gradient(90deg, transparent 0, transparent 20%, rgba(57, 255, 20, 0.4) 20%, rgba(57, 255, 20, 0.4) 24%)',
@@ -305,7 +311,7 @@ const OrbitBackground = () => (
                 animation: `planet-pan ${node.speed * 0.4}s linear infinite`
               }}
             />
-            
+
             {/* Overlaid static glossy 3D glare for spherical volume */}
             <div className="absolute inset-0 pointer-events-none rounded-full bg-[radial-gradient(circle_at_30%_30%,rgba(57,255,20,0.25)_0%,transparent_60%)] group-hover:bg-[radial-gradient(circle_at_30%_30%,rgba(57,255,20,0.5)_0%,transparent_70%)] transition-colors duration-300 z-10" style={{ boxShadow: 'inset -8px -8px 16px rgba(0,0,0,0.95), inset 2px 2px 5px rgba(255,255,255,0.15)' }}></div>
 
@@ -511,25 +517,25 @@ export default function App() {
 
   const eduData = [
     {
-      school: "University of Technology",
-      degree: "BSc in Computer Science",
-      year: "2018 - 2022",
+      school: "St. Thomas Boys' School",
+      degree: "Secondary School Education",
+      year: "2011 - 2021",
       description:
-        "Focused on software engineering, algorithms, and web development.",
+        "Completed my secondary education with a strong foundation in mathematics and science.",
     },
     {
-      school: "Code Masters Academy",
-      degree: "Full-Stack Web Development Bootcamp",
-      year: "2023",
+      school: "St. Thomas Boys' School",
+      degree: "Higher Secondary Education",
+      year: "2021 - 2023",
       description:
-        "Intensive training in modern JS frameworks, Node.js, and scaling applications.",
+        "Completed my higher secondary education with a strong foundation in mathematics and science.",
     },
     {
-      school: "CyberSecurity Institute",
-      degree: "Certified Ethical Hacker Badge",
-      year: "2024",
+      school: "Swami Vivekananda Institute of Science and Technology",
+      degree: "Bachelor of Technology (Computer Science and Engineering)",
+      year: "2023 - 2027",
       description:
-        "Advanced training in network security, pen testing, and secure coding.",
+        "Currently pursuing a Bachelor of Technology in Computer Science and Engineering with a strong foundation in computer science and engineering.",
     },
   ];
 
