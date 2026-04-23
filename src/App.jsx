@@ -31,15 +31,16 @@ import boyHoodie from "./assets/boy_hoodie.png";
 import ElderGuardAI from "./assets/ElderGuardAI.png";
 import PrivaSeal from "./assets/PrivaSeal.png";
 import AIInterviewCoach from "./assets/AIInterviewCoach.png";
-// import IITKGP from "./assets/IITKGP.png";
-// import HackathonWin from "./assets/HackathonWin.png";
-// import WinnerCert from "./assets/WinnerCert.png";
-// import NSACNominee from "./assets/NSAC.png";
+import achievementInnovation from "./assets/achievement_innovation.jpg";
+import achievementElderguard from "./assets/achievement_elderguard.jpg";
+import achievementIit from "./assets/achievement_iit.jpg";
+import achievementTrophy from "./assets/achievement_trophy.jpg";
+import achievementNasaCert from "./assets/achievement_nasa_cert.jpg";
+import achievementNasaNominee from "./assets/achievement_nasa_nominee.jpg";
 
-const IITKGP = "https://via.placeholder.com/800x600/0a1a0f/39ff14?text=IIT+KGP";
-const HackathonWin = "https://via.placeholder.com/800x600/0a1a0f/39ff14?text=Winner+Trophy";
-const WinnerCert = "https://via.placeholder.com/800x600/0a1a0f/39ff14?text=Achievement+Certificate";
-const NSACNominee = "https://via.placeholder.com/800x600/0a1a0f/39ff14?text=NSAC+Nominee";
+
+
+
 
 
 
@@ -562,56 +563,40 @@ export default function App() {
 
   const achievData = [
     {
-      title: "IIT Kharagpur Visitor",
-      desc: "A momentous visit to the Indian Institute of Technology, Kharagpur, witnessing the pinnacle of engineering excellence.",
-      img: IITKGP,
+      title: "Innovation Award",
+      desc: "Recognized for innovative excellence at INNOVENTION 2024, showcasing cutting-edge solutions.",
+      img: achievementInnovation,
     },
     {
-      title: "Hackathon Champion",
+      title: "ElderGuardAI Showcase",
+      desc: "Presenting ElderGuardAI, an AI-powered safety system designed to protect and monitor the elderly.",
+      img: achievementElderguard,
+    },
+    {
+      title: "IIT Kharagpur Journey",
+      desc: "A momentous visit to the Indian Institute of Technology, Kharagpur, exploring the roots of engineering excellence.",
+      img: achievementIit,
+    },
+    {
+      title: "Hackathon Victory",
       desc: "Proudly standing with the winning trophy after a grueling tech competition among top developers.",
-      img: HackathonWin,
+      img: achievementTrophy,
     },
     {
-      title: "Winner Recognition",
-      desc: "Officially recognized as the winner with a certificate of excellence for innovative solutions.",
-      img: WinnerCert,
+      title: "NASA Winner Recognition",
+      desc: "Officially recognized for excellence in the International Space Apps Challenge with a winner's certificate.",
+      img: achievementNasaCert,
     },
     {
-      title: "NSAC Global Nominee '24",
-      desc: "Proud to be a Global Nominee for the NASA Space Apps Challenge 2024 with team Super Coders.",
-      img: NSACNominee,
+      title: "NASA Global Nominee '24",
+      desc: "Proud Global Nominee for the NASA Space Apps Challenge 2024, selected among the top submissions worldwide.",
+      img: achievementNasaNominee,
     },
-    {
-      title: "AI Engineers Day",
 
-      desc: "Participated and showcased innovative AI solutions at emergent venue.",
-      img: "https://via.placeholder.com/400x250/0a1a0f/39ff14?text=AI+Engineers+Day",
-    },
-    {
-      title: "Vibehack",
-      desc: "Hackathon in collaboration with emergent & OpenAI.",
-      img: "https://via.placeholder.com/400x250/0a1a0f/39ff14?text=Vibehack",
-    },
-    {
-      title: "Buildathon",
-      desc: "Built scalable web applications over an intense 48-hour development sprint.",
-      img: "https://via.placeholder.com/400x250/0a1a0f/39ff14?text=Buildathon",
-    },
-    {
-      title: "Vibeathon",
-      desc: "Creative hackathon focusing on AI UI/UX interfaces and smooth futuristic vibes.",
-      img: "https://via.placeholder.com/400x250/0a1a0f/39ff14?text=Vibeathon",
-    },
-    {
-      title: "Constellation",
-      desc: "Global AI and Tech conference discussing neural architecture breakthroughs.",
-      img: "https://via.placeholder.com/400x250/0a1a0f/39ff14?text=Constellation",
-    },
-    {
-      title: "MLH Hack Days",
-      desc: "Major League Hacking premier global competitive event.",
-      img: "https://via.placeholder.com/400x250/0a1a0f/39ff14?text=MLH",
-    },
+
+
+
+
   ];
 
 
