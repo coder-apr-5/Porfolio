@@ -965,7 +965,7 @@ export default function App() {
                         <img
                           src={proj.img}
                           alt={proj.title}
-                          className="w-full h-48 object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
+                          className="w-full h-48 object-cover opacity-100 group-hover:scale-105 transition-all duration-500"
                         />
                       </div>
                       <div className="p-6">
@@ -1078,7 +1078,7 @@ export default function App() {
                       <img
                         src={achiev.img}
                         alt={achiev.title}
-                        className="w-full h-40 object-cover opacity-60 group-hover/card:opacity-100 transition-all duration-500"
+                        className="w-full h-40 object-cover opacity-100 group-hover/card:scale-105 transition-all duration-500"
                       />
                     </div>
                     <div className="p-6 whitespace-normal">
