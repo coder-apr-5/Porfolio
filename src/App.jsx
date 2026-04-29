@@ -37,14 +37,12 @@ import achievementIit from "./assets/achievement_iit.jpg";
 import achievementTrophy from "./assets/achievement_trophy.jpg";
 import achievementNasaCert from "./assets/achievement_nasa_cert.jpg";
 import achievementNasaNominee from "./assets/achievement_nasa_nominee.jpg";
-
-
-
-
-
-
-
-
+import cert1 from "./assets/cert1.jpg";
+import cert2 from "./assets/cert2.jpg";
+import cert3 from "./assets/cert3.jpg";
+import cert4 from "./assets/cert4.jpg";
+import cert5 from "./assets/cert5.jpg";
+import cert6 from "./assets/cert6.jpg";
 
 const NavItem = ({ section, current, onClick }) => (
   <button
@@ -668,39 +666,34 @@ export default function App() {
 
   const certificates = [
     {
-      title: "AWS Solutions Architect",
-      desc: "Professional tier cloud certification.",
-      img: "https://via.placeholder.com/400x250/0a1a0f/39ff14?text=AWS",
+      title: "Machine Learning I",
+      desc: "Columbia+",
+      img: cert1,
     },
     {
-      title: "Google Cloud Engineer",
-      desc: "Associate tier data engineering certificate.",
-      img: "https://via.placeholder.com/400x250/0a1a0f/39ff14?text=GCP",
+      title: "Career Essentials in Generative AI by Microsoft and LinkedIn",
+      desc: "Microsoft and LinkedIn",
+      img: cert2,
     },
     {
-      title: "DeepLearning.AI",
-      desc: "Specialization in cutting edge sequence models.",
-      img: "https://via.placeholder.com/400x250/0a1a0f/39ff14?text=DeepLearning",
+      title: "Technology Job Simulation",
+      desc: "Deloitte",
+      img: cert4,
     },
     {
-      title: "CS50x Harvard",
-      desc: "Elite Introduction to Computer Science modules.",
-      img: "https://via.placeholder.com/400x250/0a1a0f/39ff14?text=CS50",
+      title: "Lab: Retrieval Augmented Generation with LangChain",
+      desc: "IBM SkillsBuild",
+      img: cert3,
     },
     {
-      title: "Meta Front-End",
-      desc: "Professional full frontend qualification.",
-      img: "https://via.placeholder.com/400x250/0a1a0f/39ff14?text=Meta",
+      title: "Data Visualisation: Empowering Business with Effective Insights",
+      desc: "Tata",
+      img: cert5,
     },
     {
-      title: "Kaggle Master CV",
-      desc: "Top 5% competitor locally in computer vision.",
-      img: "https://via.placeholder.com/400x250/0a1a0f/39ff14?text=Kaggle",
-    },
-    {
-      title: "Docker Certified",
-      desc: "Orchestration & container ecosystem mastery.",
-      img: "https://via.placeholder.com/400x250/0a1a0f/39ff14?text=Docker",
+      title: "Enterprise Design Thinking Practitioner",
+      desc: "IBM",
+      img: cert6,
     },
   ];
 
@@ -862,15 +855,16 @@ export default function App() {
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div>
                 <p className="text-sageGreen font-body text-lg md:text-xl leading-relaxed mb-6">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Nullam in dui mauris. Vivamus hendrerit arcu sed erat molestie
-                  vehicula. Sed auctor neque eu tellus rhoncus ut eleifend nibh
-                  porttitor. Ut in nulla enim.
+                  I’m a BTech Computer Science student passionate about building impactful tech
+                  solutions that blend creativity and functionality. I enjoy working on web development,
+                  AI-driven applications, and real-world problem-solving projects. From hackathons
+                  to independent builds, I focus on turning ideas into practical products.
+                  With a strong interest in startups and innovation.
+
                 </p>
                 <p className="text-sageGreen font-body text-lg md:text-xl leading-relaxed mb-8">
-                  Phasellus pellentesque, neque dignissim convallis
-                  pellentesque, enim justo dictum risus, eget congue lacus enim
-                  auctor quam.
+                  I aim to create scalable solutions that deliver value. I’m constantly learning,
+                  experimenting, and pushing my limits to grow as a developer and problem solver.
                 </p>
                 <blockquote className="border-l-4 border-neonGreen pl-4 py-2 bg-neonGreen/5">
                   <p className="font-heading text-sm text-neonGreen/80">
@@ -1011,7 +1005,7 @@ export default function App() {
                         <img
                           src={cert.img}
                           alt={cert.title}
-                          className="w-full h-48 object-cover opacity-60 group-hover:opacity-100 transition-all duration-500"
+                          className="w-full h-48 object-cover opacity-100 group-hover:scale-105 transition-all duration-500"
                         />
                       </div>
                       <div className="p-6">
