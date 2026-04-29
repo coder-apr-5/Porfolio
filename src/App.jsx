@@ -43,6 +43,7 @@ import cert3 from "./assets/cert3.jpg";
 import cert4 from "./assets/cert4.jpg";
 import cert5 from "./assets/cert5.jpg";
 import cert6 from "./assets/cert6.jpg";
+import resumePdf from "./assets/Apurba_Roy_CV.pdf";
 
 const NavItem = ({ section, current, onClick }) => (
   <button
@@ -544,28 +545,28 @@ export default function App() {
       company: "Indian Cyber Security Solutions",
       year: "Jan 2026 - Feb 2026",
       description:
-        "Conducted vulnerability assessment and penetration testing (VAPT) on web applications to identify security weaknesses. Used tools such as Nmap, Burp Suite, Wireshark, and Metasploit for reconnaissance, scanning, and basic exploit testing. Documented vulnerabilities and recommended mitigation strategies to improve system security.",
+        "Conducted VAPT on web applications. Used Nmap, Burp Suite, and Metasploit for scanning and exploit testing, and recommended mitigation strategies.",
     },
     {
       title: "AI & Cloud Internship",
       company: "IBM Skillbuild Virtual Internship",
       year: "Dec 2025 - Jan 2026",
       description:
-        "Gained hands-on experience with IBM Cloud services and tools. Developed practical skills through guided modules and projects focused on cloud computing, problem-solving, and real-world technology applications.",
+        "Gained practical experience with IBM Cloud services. Developed hands-on skills through guided modules on cloud computing and problem-solving.",
     },
     {
       title: "Generative AI Internship",
       company: "EXCELR",
       year: "July 2025 - Aug 2025",
       description:
-        "Worked on building and fine-tuning AI models for text and image generation. Getting practical experience in prompt engineering, LLMs, RAG, Langchain and integrating AI APIs into applications, able to develop real-world AI solutions.",
+        "Built and fine-tuned AI models. Gained hands-on experience in prompt engineering, LLMs, RAG, Langchain, and API integrations.",
     },
     {
       title: "ML Internship",
       company: "Techshaksham (AICTE) initiative by MICROSOFT & SAP",
       year: "Dec 2024 - Jan 2025",
       description:
-        "A joint CSR initiative of Microsoft & SAP. It provides a unique opportunity for skills enhancement of students in the field of AI. I have been working on \"SMS Spam Detection using NLP\" under multiple Mentors for 4 weeks.",
+        "Participated in a joint CSR initiative by Microsoft & SAP. Successfully developed an 'SMS Spam Detection using NLP' model over 4 weeks.",
     },
   ];
 
@@ -574,16 +575,19 @@ export default function App() {
       title: "Techfest 2026 Winner",
       desc: "Achieved 2nd Position, Recognized for innovative excellence at INNOVENTION 2024, showcasing cutting-edge solutions.",
       img: achievementInnovation,
+      href: "https://www.linkedin.com/feed/update/urn:li:activity:7451503225096265729/"
     },
     {
       title: "ElderGuardAI Showcase",
       desc: "Presenting ElderGuardAI, an AI-powered safety system designed to protect and monitor the elderly.",
       img: achievementElderguard,
+      href: "https://www.linkedin.com/feed/update/urn:li:activity:7451503225096265729/"
     },
     {
       title: "IIT Kharagpur Journey",
       desc: "Participated in Global Entrepreneurship Summit in IIT Kharagpur. Presented our ElderGuardAI project as startup to the top professors and investors.",
       img: achievementIit,
+      href: "https://www.linkedin.com/feed/update/urn:li:activity:7425022858730508288/"
     },
     {
       title: "Smart India Hackathon 2024 Runner-up",
@@ -594,17 +598,14 @@ export default function App() {
       title: "NASA Winner Recognition",
       desc: "Officially recognized for excellence in the International Space Apps Challenge with a winner's certificate.",
       img: achievementNasaCert,
+      href: "https://www.linkedin.com/feed/update/urn:li:activity:7252188838435905536/"
     },
     {
       title: "NASA Global Nominee '24",
       desc: "Proud Global Nominee for the NASA Space Apps Challenge 2024, selected among the top submissions worldwide.",
       img: achievementNasaNominee,
+      href: "https://www.linkedin.com/feed/update/urn:li:activity:7257396184732872704/"
     },
-
-
-
-
-
   ];
 
 
@@ -614,10 +615,15 @@ export default function App() {
     { name: "Python", icon: "devicon-python-plain" },
     { name: "JavaScript", icon: "devicon-javascript-plain" },
     { name: "TypeScript", icon: "devicon-typescript-plain" },
+    { name: "HTML", icon: "devicon-html5-plain" },
+    { name: "CSS", icon: "devicon-css3-plain" },
     { name: "React", icon: "devicon-react-original" },
     { name: "Node.js", icon: "devicon-nodejs-plain" },
     { name: "Next.js", icon: "devicon-nextjs-plain" },
+    { name: "Express", icon: "devicon-express-original" },
     { name: "Tailwind CSS", icon: "devicon-tailwindcss-original" },
+    { name: "Bootstrap", icon: "devicon-bootstrap-plain" },
+    { name: "jQuery", icon: "devicon-jquery-plain" },
     { name: "Django", icon: "devicon-django-plain" },
     { name: "MongoDB", icon: "devicon-mongodb-plain" },
     { name: "MySQL", icon: "devicon-mysql-plain" },
@@ -627,8 +633,21 @@ export default function App() {
     { name: "Git", icon: "devicon-git-plain" },
     { name: "GitHub", icon: "devicon-github-original" },
     { name: "GCP", icon: "devicon-googlecloud-plain" },
+    { name: "Heroku", icon: "devicon-heroku-plain" },
     { name: "TensorFlow", icon: "devicon-tensorflow-original" },
     { name: "Numpy", icon: "devicon-numpy-plain" },
+    { name: "Pandas", icon: "devicon-pandas-original" },
+    { name: "Matplotlib", icon: "devicon-python-plain" },
+    { name: "Langchain", icon: "devicon-python-plain" },
+    { name: "LLamaIndex", icon: "devicon-python-plain" },
+    { name: "HuggingFace", icon: "devicon-python-plain" },
+    { name: "OpenAI SDK", icon: "devicon-python-plain" },
+    { name: "Gemini API", icon: "devicon-google-plain" },
+    { name: "Gradio/Streamlit", icon: "devicon-python-plain" },
+    { name: "RestAPIs", icon: "devicon-nodejs-plain" },
+    { name: "Jupyter", icon: "devicon-jupyter-plain" },
+    { name: "VS Code", icon: "devicon-vscode-plain" },
+    { name: "Figma", icon: "devicon-figma-plain" },
   ];
 
   const projects = [
@@ -676,13 +695,13 @@ export default function App() {
 
   const certificates = [
     {
-      title: "Machine Learning I",
-      desc: "Columbia+",
+      title: "Career Essentials in Generative AI by Microsoft and LinkedIn",
+      desc: "Microsoft and LinkedIn",
       img: cert1,
     },
     {
-      title: "Career Essentials in Generative AI by Microsoft and LinkedIn",
-      desc: "Microsoft and LinkedIn",
+      title: "Machine Learning I",
+      desc: "Columbia University",
       img: cert2,
     },
     {
@@ -701,7 +720,7 @@ export default function App() {
       img: cert5,
     },
     {
-      title: "Enterprise Design Thinking Practitioner",
+      title: "IBM Certified - Artificial Intelligence Foundations",
       desc: "IBM",
       img: cert6,
     },
@@ -734,16 +753,14 @@ export default function App() {
           <div className="bg-neonGreen/5 border-t border-neonGreen/10 py-2 overflow-hidden">
             <div className="flex animate-marquee whitespace-nowrap text-[10px] md:text-xs font-heading text-neonGreen/80 tracking-widest uppercase items-center">
               <span className="mx-4">
-                Full Stack Developer with GenAI || 2x Hackathon Winner ||
-                NSAC Global Nominee’24 || Built PWA & apps serving 1k+ users ||
-                Having 8+ Real World - Real Time Live Project || 5+ Open Source
-                Projects
+                Full Stack Developer with GenAI || 3x Hackathon Winner ||
+                NSAC Global Nominee’24 || Building Scalable & SaaS apps
+                serving 1k+ users || 5+ Open Source Projects
               </span>
               <span className="mx-4">
-                Full Stack Developer with GenAI || 2x Hackathon Winner ||
-                NSAC Global Nominee’24 || Built PWA & apps serving 1k+ users ||
-                Having 8+ Real World - Real Time Live Project || 5+ Open Source
-                Projects
+                Full Stack Developer with GenAI || 3x Hackathon Winner ||
+                NSAC Global Nominee’24 || Building Scalable & SaaS apps
+                serving 1k+ users || 5+ Open Source Projects
               </span>
             </div>
           </div>
@@ -814,8 +831,8 @@ export default function App() {
                 </div>
                 {/* Download CV newly added button */}
                 <a
-                  href="#"
-                  download
+                  href={resumePdf}
+                  download="Apurba_Roy_CV.pdf"
                   className="pixel-btn !bg-neonGreen/10 w-full text-center hover:bg-neonGreen hover:text-darkGreen transition-all"
                 >
                   DOWNLOAD MY CV_
@@ -824,21 +841,21 @@ export default function App() {
 
               <div className="flex gap-6 mt-auto border-t border-sageGreen/20 pt-6 w-full max-w-md">
                 <a
-                  href="#"
+                  href="https://github.com/coder-apr-5"
                   title="GitHub"
                   className="text-sageGreen hover:text-neonGreen hover:shadow-neon transition-colors"
                 >
                   <Github size={24} />
                 </a>
                 <a
-                  href="#"
+                  href="https://www.linkedin.com/in/apurba-roy-05"
                   title="LinkedIn"
                   className="text-sageGreen hover:text-neonGreen hover:shadow-neon transition-colors"
                 >
                   <Linkedin size={24} />
                 </a>
                 <a
-                  href="#"
+                  href="https://x.com/apuXrba_5"
                   title="Twitter"
                   className="text-sageGreen hover:text-neonGreen hover:shadow-neon transition-colors"
                 >
@@ -914,19 +931,19 @@ export default function App() {
               {[
                 {
                   label: "Total Projects",
-                  value: projects.length.toString(),
+                  value: "10+",
                   icon: <Briefcase className="text-neonGreen mb-2" size={32} />,
                 },
                 {
                   label: "Certificates",
-                  value: certificates.length.toString(),
+                  value: "15+",
                   icon: (
                     <GraduationCap className="text-neonGreen mb-2" size={32} />
                   ),
                 },
                 {
                   label: "Years Exp",
-                  value: "05",
+                  value: "02+",
                   icon: <Code className="text-neonGreen mb-2" size={32} />,
                 },
               ].map((stat, i) => (
@@ -1234,7 +1251,7 @@ export default function App() {
               <div className="flex flex-col gap-12">
                 <div>
                   <h3 className="font-heading text-xl text-sageGreen mb-6">
-                    NETWORK_NODES //
+                    LET'S CONNECT
                   </h3>
                   <div className="grid grid-cols-2 gap-4">
                     {[
