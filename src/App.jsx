@@ -784,7 +784,9 @@ export default function App() {
                   words={[
                     "Computer Science Engineer",
                     "Fullstack Developer",
+                    "Open-Source Contributor",
                     "AI ML Enthusiast",
+                    "Freelancer"
                   ]}
                   loop
                   cursor
@@ -1236,16 +1238,18 @@ export default function App() {
                   </h3>
                   <div className="grid grid-cols-2 gap-4">
                     {[
-                      // Replaced TikTok and Youtube with Leetcode and GeeksforGeeks properly mapped
-                      { name: "LinkedIn", icon: <Linkedin size={20} /> },
-                      { name: "GitHub", icon: <Github size={20} /> },
-                      { name: "Instagram", icon: <Instagram size={20} /> },
-                      { name: "LeetCode", icon: <Code size={20} /> },
-                      { name: "GeeksForGeeks", icon: <Brain size={20} /> },
+                      { name: "LinkedIn", icon: <Linkedin size={20} />, url: "https://www.linkedin.com/in/apurba-roy05/" },
+                      { name: "GitHub", icon: <Github size={20} />, url: "https://github.com/coder-apr-5" },
+                      { name: "X (Twitter)", icon: <Twitter size={20} />, url: "https://x.com/apuXrba_5" },
+                      { name: "Instagram", icon: <Instagram size={20} />, url: "https://www.instagram.com/_apr_5_/" },
+                      { name: "LeetCode", icon: <Code size={20} />, url: "https://leetcode.com/u/50VL5Hlv29/" },
+                      { name: "GeeksForGeeks", icon: <Brain size={20} />, url: "https://geeksforgeeks.org/user/apurbars65s/" },
                     ].map((social) => (
                       <a
                         key={social.name}
-                        href="#"
+                        href={social.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="flex items-center gap-3 p-4 border border-sageGreen/30 hover:border-neonGreen hover:text-neonGreen text-sageGreen transition-all hover:bg-neonGreen/5 group"
                       >
                         <span className="group-hover:animate-pulse">
