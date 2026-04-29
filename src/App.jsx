@@ -540,22 +540,32 @@ export default function App() {
 
   const expData = [
     {
-      title: "",
-      year: "2023",
+      title: "Cyber Security Internship",
+      company: "Indian Cyber Security Solutions",
+      year: "Jan 2026 - Feb 2026",
       description:
-        "Won the national AI development hackathon by building a fast NLP triage system.",
+        "Conducted vulnerability assessment and penetration testing (VAPT) on web applications to identify security weaknesses. Used tools such as Nmap, Burp Suite, Wireshark, and Metasploit for reconnaissance, scanning, and basic exploit testing. Documented vulnerabilities and recommended mitigation strategies to improve system security.",
     },
     {
-      title: "Open Source Contributor",
-      year: "2024",
+      title: "AI & Cloud Internship",
+      company: "IBM Skillbuild Virtual Internship",
+      year: "Dec 2025 - Jan 2026",
       description:
-        "Successfully merged 25+ pull requests in popular JS/Python frameworks.",
+        "Gained hands-on experience with IBM Cloud services and tools. Developed practical skills through guided modules and projects focused on cloud computing, problem-solving, and real-world technology applications.",
     },
     {
-      title: "Best Algorithm Design",
-      year: "2022",
+      title: "Generative AI Internship",
+      company: "EXCELR",
+      year: "July 2025 - Aug 2025",
       description:
-        "Awarded during the university coding cup for complex data structure optimization.",
+        "Worked on building and fine-tuning AI models for text and image generation. Getting practical experience in prompt engineering, LLMs, RAG, Langchain and integrating AI APIs into applications, able to develop real-world AI solutions.",
+    },
+    {
+      title: "ML Internship",
+      company: "Techshaksham (AICTE) initiative by MICROSOFT & SAP",
+      year: "Dec 2024 - Jan 2025",
+      description:
+        "A joint CSR initiative of Microsoft & SAP. It provides a unique opportunity for skills enhancement of students in the field of AI. I have been working on \"SMS Spam Detection using NLP\" under multiple Mentors for 4 weeks.",
     },
   ];
 
