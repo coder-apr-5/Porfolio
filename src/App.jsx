@@ -571,8 +571,8 @@ export default function App() {
 
   const achievData = [
     {
-      title: "Innovation Award",
-      desc: "Recognized for innovative excellence at INNOVENTION 2024, showcasing cutting-edge solutions.",
+      title: "Techfest 2026 Winner",
+      desc: "Achieved 2nd Position, Recognized for innovative excellence at INNOVENTION 2024, showcasing cutting-edge solutions.",
       img: achievementInnovation,
     },
     {
@@ -582,11 +582,11 @@ export default function App() {
     },
     {
       title: "IIT Kharagpur Journey",
-      desc: "A momentous visit to the Indian Institute of Technology, Kharagpur, exploring the roots of engineering excellence.",
+      desc: "Participated in Global Entrepreneurship Summit in IIT Kharagpur. Presented our ElderGuardAI project as startup to the top professors and investors.",
       img: achievementIit,
     },
     {
-      title: "Hackathon Victory",
+      title: "Smart India Hackathon 2024 Runner-up",
       desc: "Proudly standing with the winning trophy after a grueling tech competition among top developers.",
       img: achievementTrophy,
     },
