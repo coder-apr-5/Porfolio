@@ -516,31 +516,31 @@ export default function App() {
 
   const eduData = [
     {
-      school: "St. Thomas Boys' School",
-      degree: "Secondary School Education",
+      school: "St. Thomas Boys' School,Khiderpore",
+      degree: "Primary & Secondary School Education",
       year: "2011 - 2021",
       description:
-        "Completed my secondary education with a strong foundation in mathematics and science.",
+        "Completed my primary and secondary education with a strong foundation in English and other subjects.",
     },
     {
-      school: "St. Thomas Boys' School",
+      school: "St. Thomas Boys' School,Khiderpore",
       degree: "Higher Secondary Education",
       year: "2021 - 2023",
       description:
-        "Completed my higher secondary education with a strong foundation in mathematics and science.",
+        "Completed my higher secondary education with a strong foundation in English, Maths and Computer Science.",
     },
     {
       school: "Swami Vivekananda Institute of Science and Technology",
       degree: "Bachelor of Technology (Computer Science and Engineering)",
       year: "2023 - 2027",
       description:
-        "Currently pursuing a Bachelor of Technology in Computer Science and Engineering with a strong foundation in computer science and engineering.",
+        "Currently pursuing a Bachelor of Technology in Computer Science and Engineering with a strong foundation in algorithms, data structures, Machine Learning, and Artificial Intelligence.",
     },
   ];
 
   const expData = [
     {
-      title: "1st Place AI Hackathon",
+      title: "",
       year: "2023",
       description:
         "Won the national AI development hackathon by building a fast NLP triage system.",
@@ -1001,11 +1001,11 @@ export default function App() {
                       key={i}
                       className="group border border-sageGreen bg-darkGreen overflow-hidden hover:border-neonGreen transition-all duration-300"
                     >
-                      <div className="border-b border-sageGreen group-hover:border-neonGreen overflow-hidden">
+                      <div className="border-b border-sageGreen group-hover:border-neonGreen overflow-hidden flex items-center justify-center bg-white/5">
                         <img
                           src={cert.img}
                           alt={cert.title}
-                          className="w-full h-48 object-cover opacity-100 group-hover:scale-105 transition-all duration-500"
+                          className="w-full h-56 object-contain p-2 opacity-100 group-hover:scale-105 transition-all duration-500"
                         />
                       </div>
                       <div className="p-6">
@@ -1019,14 +1019,14 @@ export default function App() {
                     </div>
                   ))}
                 </div>
-                {certLimit < certificates.length && (
-                  <button
-                    onClick={() => setCertLimit((prev) => prev + 3)}
-                    className="pixel-btn mt-12 w-64 uppercase hover:!bg-transparent hover:!text-neonGreen"
-                  >
-                    VIEW MORE
-                  </button>
-                )}
+                <a
+                  href="#"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="pixel-btn mt-12 w-64 uppercase hover:!bg-transparent hover:!text-neonGreen text-center inline-block"
+                >
+                  VIEW MORE
+                </a>
               </div>
             )}
 
