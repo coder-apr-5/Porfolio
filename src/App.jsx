@@ -163,7 +163,7 @@ const TimelineItem = ({ item, index }) => {
         <h4 className="text-sageGreen font-body text-xl mb-2">
           {item.school || item.company || "Achievement"}
         </h4>
-        <span className="inline-block bg-neonGreen/20 text-neonGreen px-2 py-1 text-xs font-body mb-4">
+        <span className="inline-block bg-neonGreen/20 text-neonGreen px-3 py-1.5 text-sm font-body mb-4">
           {item.year}
         </span>
         <p className="text-sageGreen text-sm md:text-base font-body">
@@ -1447,8 +1447,7 @@ export default function App() {
 
         <footer className="border-t border-neonGreen bg-darkGreen py-6 text-center">
           <p className="font-body text-sageGreen text-lg">
-            &copy; {new Date().getFullYear()} APURBA ROY. All routines mapped
-            and executed properly.
+            &copy; {new Date().getFullYear()} APURBA ROY. All rights reserved.
           </p>
         </footer>
       </div>
