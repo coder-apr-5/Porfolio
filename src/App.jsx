@@ -601,13 +601,13 @@ export default function App() {
     },
     {
       title: "ElderGuardAI Showcase",
-      desc: "Presenting ElderGuardAI, an AI-powered safety system designed to protect and monitor the elderly, successfully securing a formal offer for corporate collaboration.",
+      desc: "Presented our AI-powered elderly safety system, ElderGuardAI, receiving a formal corporate collaboration offer.",
       img: achievementElderguard,
       href: "https://www.linkedin.com/feed/update/urn:li:activity:7451503225096265729/"
     },
     {
       title: "IIT Kharagpur Journey",
-      desc: "Participated in Global Entrepreneurship Summit in IIT Kharagpur. Presented our ElderGuardAI project as startup to the top professors and investors.",
+      desc: "Pitched our ElderGuardAI startup to top professors and investors at the Global Entrepreneurship Summit, IIT Kharagpur.",
       img: achievementIit,
       href: "https://www.linkedin.com/feed/update/urn:li:activity:7425022858730508288/"
     },
