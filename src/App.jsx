@@ -1050,7 +1050,7 @@ export default function App() {
                   {certificates.slice(0, certLimit).map((cert, i) => (
                     <div
                       key={i}
-                      className="group border border-sageGreen bg-darkGreen overflow-hidden hover:border-neonGreen transition-all duration-300"
+                      className="group border border-sageGreen bg-darkGreen overflow-hidden hover:border-neonGreen transition-all duration-300 relative z-20"
                     >
                       <div className="border-b border-sageGreen group-hover:border-neonGreen overflow-hidden flex items-center justify-center bg-white/5">
                         <img
