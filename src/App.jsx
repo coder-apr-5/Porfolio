@@ -33,6 +33,9 @@ import boyHoodie from "./assets/boy_hoodie.png";
 import ElderGuardAI from "./assets/ElderGuardAI.png";
 import PrivaSeal from "./assets/PrivaSeal.png";
 import AIInterviewCoach from "./assets/AIInterviewCoach.png";
+import AIStudyDashboard from "./assets/ai_study_dashboard.png";
+import CoursePathwayGenerator from "./assets/course_pathway_generator.png";
+import LibraryManagementSystem from "./assets/library_management_system.png";
 import achievementInnovation from "./assets/achievement_innovation.jpg";
 import achievementElderguard from "./assets/achievement_elderguard.jpg";
 import achievementIit from "./assets/achievement_iit.jpg";
@@ -479,8 +482,8 @@ export default function App() {
     const unsubConnected = onValue(connectedRef, (snap) => {
       if (snap.val() === true) {
         userRef = push(viewersRef);
-        onDisconnect(userRef).remove().catch(() => {});
-        set(userRef, true).catch(() => {});
+        onDisconnect(userRef).remove().catch(() => { });
+        set(userRef, true).catch(() => { });
       }
     });
 
@@ -493,7 +496,7 @@ export default function App() {
       unsubConnected();
       unsubViewers();
       if (userRef) {
-        remove(userRef).catch(() => {});
+        remove(userRef).catch(() => { });
       }
     };
   }, []);
@@ -685,24 +688,19 @@ export default function App() {
       img: AIInterviewCoach,
     },
     {
-      title: "AI Image Gen",
-      desc: "Deep learning based image synthesis API interface.",
-      img: "https://via.placeholder.com/400x250/0a1a0f/39ff14?text=AI+Gen",
+      title: "AI Study Dashboard",
+      desc: "An intelligent dashboard for organizing and tracking study sessions.",
+      img: AIStudyDashboard,
     },
     {
-      title: "Task CLI",
-      desc: "Command line interface for managing daily tasks remotely.",
-      img: "https://via.placeholder.com/400x250/0a1a0f/39ff14?text=CLI",
+      title: "Course Pathway Generator",
+      desc: "AI-driven tool to generate personalized learning pathways.",
+      img: CoursePathwayGenerator,
     },
     {
-      title: "Pixel Portfolio",
-      desc: "My own retro personal site builder styling framework.",
-      img: "https://via.placeholder.com/400x250/0a1a0f/39ff14?text=Pixel+Port",
-    },
-    {
-      title: "AutoDeploy",
-      desc: "CI/CD serverless auto deployment cloud script.",
-      img: "https://via.placeholder.com/400x250/0a1a0f/39ff14?text=Deploy",
+      title: "Library Managment System",
+      desc: "A comprehensive system for managing library resources and users.",
+      img: LibraryManagementSystem,
     },
     {
       title: "DataMiner",
@@ -1028,14 +1026,14 @@ export default function App() {
                     </div>
                   ))}
                 </div>
-                {projLimit < projects.length && (
-                  <button
-                    onClick={() => setProjLimit((prev) => prev + 6)}
-                    className="pixel-btn mt-12 w-64 uppercase"
-                  >
-                    VIEW MORE
-                  </button>
-                )}
+                <a
+                  href="https://github.com/coder-apr-5"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="pixel-btn mt-12 w-64 uppercase text-center block"
+                >
+                  VIEW MORE
+                </a>
               </div>
             )}
 
@@ -1314,7 +1312,7 @@ export default function App() {
                       className="font-heading text-sm text-neonGreen cursor-pointer select-none title-admin"
                       onDoubleClick={() => setIsAdmin(!isAdmin)}
                     >
-                      PUBLIC_LOGS{" "}
+                      COMMENTS{" "}
                       {isAdmin && (
                         <span className="text-[10px] ml-2 animate-pulse">
                           [ADMIN_ACTIVE]
