@@ -92,7 +92,7 @@ const GlitchAvatar = () => {
         <span className="w-1.5 h-1.5 rounded-full bg-neonGreen animate-pulse"></span>
         BASE_LOC: INDIA (IST)
       </div>
-      <div className="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 border-2 border-neonGreen bg-darkGreen shadow-[0_0_15px_rgba(57,255,20,0.3)] group">
+      <div className="relative w-80 h-80 md:w-96 md:h-96 lg:w-[28rem] lg:h-[28rem] border-2 border-neonGreen bg-darkGreen shadow-[0_0_15px_rgba(57,255,20,0.3)] group">
         <div
           className={`glitch-wrapper relative w-full h-full overflow-hidden border border-sageGreen/50 ${isGlitching ? "is-glitching" : ""}`}
         >
@@ -839,7 +839,7 @@ export default function App() {
                   typeSpeed={60}
                 />
               </p>
-              <h1 className="font-heading text-4xl md:text-6xl text-white mb-6 leading-tight min-h-[144px] md:min-h-[160px]">
+              <h1 className="font-heading text-4xl md:text-6xl text-white mb-6 leading-tight min-h-[6rem] md:min-h-[10rem]">
                 Hi, I'm <br />
                 <span className="text-neonGreen text-shadow-neon whitespace-nowrap">
                   {/* Typewriter for Name */}
