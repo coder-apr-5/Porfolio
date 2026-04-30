@@ -539,16 +539,16 @@ export default function App() {
 
   const eduData = [
     {
-      school: "St. Thomas Boys' School,Khiderpore",
-      degree: "Primary & Secondary School Education",
-      year: "2011 - 2021",
+      school: "St. Thomas Boys' School, Khiderpore",
+      degree: "Secondary School Education",
+      year: "2021",
       description:
-        "Completed my primary and secondary education with a strong foundation in English and other subjects.",
+        "Completed my secondary school education with a strong foundation in English and other subjects.",
     },
     {
-      school: "St. Thomas Boys' School,Khiderpore",
+      school: "St. Thomas Boys' School, Khiderpore",
       degree: "Higher Secondary Education",
-      year: "2021 - 2023",
+      year: "2023",
       description:
         "Completed my higher secondary education with a strong foundation in English, Maths and Computer Science.",
     },
