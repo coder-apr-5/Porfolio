@@ -941,7 +941,7 @@ export default function App() {
 
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div>
-                <p className="text-sageGreen font-body text-lg md:text-xl leading-relaxed mb-6">
+                <p className="text-sageGreen font-body text-xl md:text-2xl leading-relaxed mb-6">
                   I’m a BTech Computer Science student passionate about building impactful tech
                   solutions that blend creativity and functionality. I enjoy working on web development,
                   AI-driven applications, and real-world problem-solving projects. From hackathons
@@ -949,7 +949,7 @@ export default function App() {
                   With a strong interest in startups and innovation.
 
                 </p>
-                <p className="text-sageGreen font-body text-lg md:text-xl leading-relaxed mb-8">
+                <p className="text-sageGreen font-body text-xl md:text-2xl leading-relaxed mb-8">
                   I aim to create scalable solutions that deliver value. I’m constantly learning,
                   experimenting, and pushing my limits to grow as a developer and problem solver.
                 </p>
