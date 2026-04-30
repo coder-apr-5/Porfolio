@@ -1141,7 +1141,7 @@ export default function App() {
                       <h3 className="font-heading text-sageGreen group-hover/card:text-neonGreen transition-colors text-lg mb-2">
                         {achiev.title}
                       </h3>
-                      <p className="font-body text-sageGreen text-sm mb-4 h-16 overflow-hidden line-clamp-3">
+                      <p className="font-body text-sageGreen text-base mb-4 h-20 overflow-hidden line-clamp-3">
                         {achiev.desc}
                       </p>
                     </div>
