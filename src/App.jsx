@@ -1033,7 +1033,7 @@ export default function App() {
                   ))}
                 </div>
                 <a
-                  href="https://github.com/coder-apr-5"
+                  href="https://github.com/coder-apr-5?tab=repositories"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="pixel-btn mt-12 w-64 uppercase text-center block"
