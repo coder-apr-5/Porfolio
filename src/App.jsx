@@ -607,7 +607,7 @@ export default function App() {
     },
     {
       title: "IIT Kharagpur Journey",
-      desc: "Pitched our ElderGuardAI startup to top professors and investors at the Global Entrepreneurship Summit, IIT Kharagpur.",
+      desc: "Pitched our ElderGuardAI startup project to top professors and investors at the Global Entrepreneurship Summit, IIT Kharagpur.",
       img: achievementIit,
       href: "https://www.linkedin.com/feed/update/urn:li:activity:7425022858730508288/"
     },
