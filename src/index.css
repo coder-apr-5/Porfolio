@@ -5,6 +5,25 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    font-size: 16px; /* Base size for desktop */
+  }
+
+  @media (max-width: 1024px) {
+    html {
+      font-size: 14px; /* Tablet */
+    }
+  }
+
+  @media (max-width: 768px) {
+    html {
+      font-size: 12px; /* Small tablet / Large phone */
+    }
+  }
+
+  @media (max-width: 480px) {
+    html {
+      font-size: 9px; /* Phones - significantly shrinks all rem units */
+    }
   }
 
   body {

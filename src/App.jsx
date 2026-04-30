@@ -12,6 +12,8 @@ import {
   Briefcase,
   TerminalSquare,
   Brain,
+  Menu,
+  X,
 } from "lucide-react";
 import { Typewriter } from "react-simple-typewriter";
 import { db } from "./firebase.js";
@@ -144,19 +146,19 @@ const TimelineItem = ({ item, index }) => {
   return (
     <div
       ref={domRef}
-      className={`relative w-full my-8 flex justify-between items-center transition-all duration-700 ease-out transform ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 " + (index % 2 === 0 ? "-translate-x-12" : "translate-x-12")} md:flex-row flex-col ${index % 2 === 0 ? "md:flex-row-reverse" : ""}`}
+      className={`relative w-full my-8 flex justify-between items-center transition-all duration-700 ease-out transform ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 " + (index % 2 === 0 ? "-translate-x-12" : "translate-x-12")} flex-row ${index % 2 === 0 ? "flex-row-reverse" : ""}`}
     >
-      <div className="order-1 md:w-5/12 hidden md:block"></div>
+      <div className="order-1 w-5/12 block"></div>
 
       {/* Center timeline dot */}
-      <div className="z-20 md:order-1 flex items-center shadow-neon bg-neonGreen w-4 h-4 rounded-full absolute left-4 md:left-1/2 md:transform md:-translate-x-1/2"></div>
+      <div className="z-20 md:order-1 flex items-center shadow-neon bg-neonGreen w-4 h-4 rounded-full absolute left-1/2 transform -translate-x-1/2"></div>
 
       {/* Card Content */}
       <div
-        className={`order-1 border border-neonGreen shadow-neon bg-darkGreen/80 p-6 md:w-5/12 w-full ml-12 md:ml-0 rounded-md`}
+        className={`order-1 border border-neonGreen shadow-neon bg-darkGreen/80 p-6 w-5/12 ml-0 rounded-md`}
       >
         <div className="flex justify-between items-center mb-2">
-          <h3 className="font-heading text-neonGreen text-sm md:text-base leading-relaxed">
+          <h3 className="font-heading text-neonGreen text-base leading-relaxed">
             {item.degree || item.title}
           </h3>
         </div>
@@ -166,7 +168,7 @@ const TimelineItem = ({ item, index }) => {
         <span className="inline-block bg-neonGreen/20 text-neonGreen px-3 py-1.5 text-sm font-body mb-4">
           {item.year}
         </span>
-        <p className="text-sageGreen text-sm md:text-base font-body">
+        <p className="text-sageGreen text-base font-body leading-relaxed">
           {item.description}
         </p>
       </div>
@@ -335,6 +337,7 @@ export default function App() {
   const [showIntro, setShowIntro] = useState(true);
   const [activeSection, setActiveSection] = useState("hero");
   const [activeTab, setActiveTab] = useState("projects");
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const [projLimit, setProjLimit] = useState(6);
   const [certLimit, setCertLimit] = useState(6);
@@ -758,10 +761,12 @@ export default function App() {
         <OrbitBackground />
         {/* Header/Nav */}
         <header className="fixed top-0 w-full z-50 bg-darkGreen/90 backdrop-blur-sm border-b border-neonGreen/30 shadow-md">
-          <div className="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
+          <div className="max-w-6xl mx-auto px-4 py-2 md:py-4 flex justify-between items-center">
             <div className="font-heading text-neonGreen text-xl text-shadow-neon">
               &lt;APR_5/&gt;
             </div>
+            
+            {/* Desktop Nav */}
             <nav className="hidden md:flex gap-4">
               {sections.map((s) => (
                 <NavItem
@@ -772,7 +777,37 @@ export default function App() {
                 />
               ))}
             </nav>
+
+            {/* Mobile Nav Toggle */}
+            <button
+              className="md:hidden text-neonGreen p-2 focus:outline-none"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            >
+              {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
           </div>
+
+          {/* Mobile Nav Menu */}
+          {isMobileMenuOpen && (
+            <nav className="md:hidden bg-darkGreen border-t border-neonGreen/30 py-4 px-4 flex flex-col gap-4 shadow-neon">
+              {sections.map((s) => (
+                <button
+                  key={s.id}
+                  onClick={() => {
+                    scrollToSection(s.id);
+                    setIsMobileMenuOpen(false);
+                  }}
+                  className={`font-heading text-sm text-left uppercase tracking-wider transition-colors ${
+                    activeSection === s.id
+                      ? "text-neonGreen text-shadow-neon"
+                      : "text-sageGreen hover:text-neonGreen"
+                  }`}
+                >
+                  {s.label}
+                </button>
+              ))}
+            </nav>
+          )}
           <div className="bg-neonGreen/5 border-t border-neonGreen/10 py-2 overflow-hidden">
             <div className="flex animate-marquee whitespace-nowrap text-[10px] md:text-xs font-heading text-neonGreen/80 tracking-widest uppercase items-center">
               <span className="mx-4">
@@ -895,7 +930,7 @@ export default function App() {
           {/* ABOUT ME */}
           <section
             id="about"
-            className="py-20 mb-20 border-t border-neonGreen/20"
+            className="py-20 mb-20 border-t border-neonGreen/20 relative z-20"
           >
             <div className="flex items-center gap-4 mb-12">
               <h2 className="font-heading text-3xl text-neonGreen text-shadow-neon">
@@ -940,7 +975,7 @@ export default function App() {
           {/* PORTFOLIO SHOWCASE */}
           <section
             id="portfolio"
-            className="py-20 mb-20 border-t border-neonGreen/20"
+            className="py-20 mb-20 border-t border-neonGreen/20 relative z-20"
           >
             <div className="flex items-center gap-4 mb-12">
               <h2 className="font-heading text-3xl text-neonGreen text-shadow-neon">
@@ -1021,7 +1056,7 @@ export default function App() {
                         <p className="font-body text-sageGreen mb-6 h-20">
                           {proj.desc}
                         </p>
-                        <div className="flex gap-3">
+                        <div className="flex flex-col sm:flex-row gap-3">
                           <button className="flex-1 flex items-center justify-center gap-2 border border-neonGreen py-2 text-neonGreen font-heading text-xs hover:bg-neonGreen hover:text-darkGreen transition-colors">
                             <ExternalLink size={14} /> DEMO
                           </button>
@@ -1104,7 +1139,7 @@ export default function App() {
           {/* ACHIEVEMENTS MARQUEE */}
           <section
             id="achievements"
-            className="py-20 mb-20 border-t border-neonGreen/20 overflow-hidden"
+            className="py-20 mb-20 border-t border-neonGreen/20 overflow-hidden relative z-20"
           >
             <div className="flex items-center gap-4 mb-12">
               <h2 className="font-heading text-3xl text-neonGreen text-shadow-neon">
@@ -1155,7 +1190,7 @@ export default function App() {
           {/* EDUCATION TIMELINE */}
           <section
             id="education"
-            className="py-20 border-t border-neonGreen/20"
+            className="py-20 border-t border-neonGreen/20 relative z-20"
           >
             <div className="flex items-center gap-4 mb-16">
               <h2 className="font-heading text-3xl text-neonGreen text-shadow-neon">
@@ -1164,8 +1199,8 @@ export default function App() {
               <div className="h-px bg-neonGreen/30 flex-grow"></div>
             </div>
 
-            <div className="relative container mx-auto px-6 flex flex-col space-y-8">
-              <div className="absolute z-0 w-1 bg-neonGreen/50 shadow-neon h-full md:left-1/2 md:transform md:-translate-x-1/2 left-6 ml-[13px] md:ml-0"></div>
+            <div className="relative container mx-auto px-2 md:px-6 flex flex-col space-y-8">
+              <div className="absolute z-0 w-1 bg-neonGreen/50 shadow-neon h-full left-1/2 transform -translate-x-1/2"></div>
               {eduData.map((item, index) => (
                 <TimelineItem key={"edu" + index} item={item} index={index} />
               ))}
@@ -1175,7 +1210,7 @@ export default function App() {
           {/* WORK EXPERIENCE */}
           <section
             id="experience"
-            className="py-20 mb-20 border-t border-neonGreen/20"
+            className="py-20 mb-20 border-t border-neonGreen/20 relative z-20"
           >
             <div className="flex items-center gap-4 mb-16">
               <h2 className="font-heading text-3xl text-neonGreen text-shadow-neon">
@@ -1184,8 +1219,8 @@ export default function App() {
               <div className="h-px bg-neonGreen/30 flex-grow"></div>
             </div>
 
-            <div className="relative container mx-auto px-6 flex flex-col space-y-8">
-              <div className="absolute z-0 w-1 bg-neonGreen/50 shadow-neon h-full md:left-1/2 md:transform md:-translate-x-1/2 left-6 ml-[13px] md:ml-0"></div>
+            <div className="relative container mx-auto px-2 md:px-6 flex flex-col space-y-8">
+              <div className="absolute z-0 w-1 bg-neonGreen/50 shadow-neon h-full left-1/2 transform -translate-x-1/2"></div>
               {expData.map((item, index) => (
                 <TimelineItem
                   key={"exp" + index}
@@ -1197,7 +1232,7 @@ export default function App() {
           </section>
 
           {/* CONTACT SECTION */}
-          <section id="contact" className="py-20 border-t border-neonGreen/20">
+          <section id="contact" className="py-20 border-t border-neonGreen/20 relative z-20">
             <div className="flex items-center gap-4 mb-16">
               <h2 className="font-heading text-3xl text-neonGreen text-shadow-neon">
                 &gt; CONTACT
