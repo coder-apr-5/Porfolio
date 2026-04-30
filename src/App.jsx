@@ -49,6 +49,7 @@ import cert4 from "./assets/cert4.jpg";
 import cert5 from "./assets/cert5.jpg";
 import cert6 from "./assets/cert6.jpg";
 import resumePdf from "./assets/Apurba_Roy_CV.pdf";
+import profileImg from "./assets/profile.jpg";
 
 const NavItem = ({ section, current, onClick }) => (
   <button
@@ -925,12 +926,12 @@ export default function App() {
                 </blockquote>
               </div>
 
-              <div className="relative mx-auto group">
+              <div className="relative mx-auto group animate-float">
                 <div className="absolute inset-0 border-2 border-neonGreen translate-x-4 translate-y-4 group-hover:translate-x-2 group-hover:translate-y-2 transition-transform duration-300"></div>
                 <img
-                  src="https://via.placeholder.com/400x400/0a1a0f/39ff14?text=PROFILE_IMG"
+                  src={profileImg}
                   alt="Profile"
-                  className="relative z-10 block grayscale hover:grayscale-0 transition-all duration-500 w-full max-w-sm border border-neonGreen"
+                  className="relative z-10 block transition-transform duration-500 w-full max-w-sm border border-neonGreen object-cover aspect-square brightness-110 group-hover:scale-105"
                 />
               </div>
             </div>
