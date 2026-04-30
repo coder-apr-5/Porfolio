@@ -1021,9 +1021,9 @@ export default function App() {
                           {proj.desc}
                         </p>
                         <div className="flex gap-3">
-                          <a href={proj.link || "#"} target={proj.link ? "_blank" : "_self"} rel="noopener noreferrer" className="flex-1 flex items-center justify-center gap-2 border border-neonGreen py-2 text-neonGreen font-heading text-xs hover:bg-neonGreen hover:text-darkGreen transition-colors">
+                          <button className="flex-1 flex items-center justify-center gap-2 border border-neonGreen py-2 text-neonGreen font-heading text-xs hover:bg-neonGreen hover:text-darkGreen transition-colors">
                             <ExternalLink size={14} /> DEMO
-                          </a>
+                          </button>
                           <a href={proj.link || "#"} target={proj.link ? "_blank" : "_self"} rel="noopener noreferrer" className="flex-1 flex items-center justify-center gap-2 border border-sageGreen py-2 text-sageGreen font-heading text-xs hover:border-neonGreen hover:text-neonGreen transition-colors">
                             <Info size={14} /> DETAILS
                           </a>
