@@ -676,31 +676,37 @@ export default function App() {
       title: "ElderGuardAI",
       desc: "Predict. Protect. Prevent.",
       img: ElderGuardAI,
+      link: "https://github.com/coder-apr-5/ElderGuardAI",
     },
     {
       title: "PrivaSeal",
       desc: "Verify Anything. Reveal Nothing.",
       img: PrivaSeal,
+      link: "https://github.com/coder-apr-5/PrivaSeal_ZKP",
     },
     {
       title: "AI Interview Coach",
       desc: "Your Future Starts Here. Personalized AI coaching.",
       img: AIInterviewCoach,
+      link: "https://github.com/coder-apr-5/interview_coach",
     },
     {
       title: "AI Study Dashboard",
       desc: "An intelligent dashboard for organizing and tracking study sessions.",
       img: AIStudyDashboard,
+      link: "https://github.com/coder-apr-5/AI-study-Dashboard",
     },
     {
       title: "Course Pathway Generator",
       desc: "AI-driven tool to generate personalized learning pathways.",
       img: CoursePathwayGenerator,
+      link: "https://github.com/coder-apr-5/Course_Pathway_Agentic_AI",
     },
     {
       title: "Library Managment System",
       desc: "A comprehensive system for managing library resources and users.",
       img: LibraryManagementSystem,
+      link: "https://github.com/coder-apr-5/Library-Management-System",
     },
     {
       title: "DataMiner",
@@ -1011,16 +1017,16 @@ export default function App() {
                         <h3 className="font-heading text-neonGreen text-xl mb-3">
                           {proj.title}
                         </h3>
-                        <p className="font-body text-sageGreen mb-6 h-12">
+                        <p className="font-body text-sageGreen mb-6 h-20">
                           {proj.desc}
                         </p>
                         <div className="flex gap-3">
-                          <button className="flex-1 flex items-center justify-center gap-2 border border-neonGreen py-2 text-neonGreen font-heading text-xs hover:bg-neonGreen hover:text-darkGreen transition-colors">
+                          <a href={proj.link || "#"} target={proj.link ? "_blank" : "_self"} rel="noopener noreferrer" className="flex-1 flex items-center justify-center gap-2 border border-neonGreen py-2 text-neonGreen font-heading text-xs hover:bg-neonGreen hover:text-darkGreen transition-colors">
                             <ExternalLink size={14} /> DEMO
-                          </button>
-                          <button className="flex-1 flex items-center justify-center gap-2 border border-sageGreen py-2 text-sageGreen font-heading text-xs hover:border-neonGreen hover:text-neonGreen transition-colors">
+                          </a>
+                          <a href={proj.link || "#"} target={proj.link ? "_blank" : "_self"} rel="noopener noreferrer" className="flex-1 flex items-center justify-center gap-2 border border-sageGreen py-2 text-sageGreen font-heading text-xs hover:border-neonGreen hover:text-neonGreen transition-colors">
                             <Info size={14} /> DETAILS
-                          </button>
+                          </a>
                         </div>
                       </div>
                     </div>
