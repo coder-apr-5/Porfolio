@@ -22,6 +22,8 @@ import {
   serverTimestamp,
   remove,
   update,
+  onDisconnect,
+  set,
 } from "firebase/database";
 
 import boyCoding from "./assets/boy_coding.png";
@@ -465,19 +467,35 @@ export default function App() {
   // Live Viewer setup
   const [viewers, setViewers] = useState(0);
   useEffect(() => {
-    // Start randomly between 12 and 45 viewers
-    setViewers(Math.floor(Math.random() * 33) + 12);
+    if (!db) {
+      setViewers(1);
+      return;
+    }
 
-    const viewerInterval = setInterval(() => {
-      setViewers((prev) => {
-        // Fluctuate viewers slightly up or down to make it look "live"
-        const change = Math.floor(Math.random() * 3) - 1; // -1, 0, or 1
-        let next = prev + change;
-        if (next < 5) next = 5; // Bottom cap
-        return next;
-      });
-    }, 3500);
-    return () => clearInterval(viewerInterval);
+    const viewersRef = ref(db, "active_viewers");
+    const connectedRef = ref(db, ".info/connected");
+    let userRef;
+
+    const unsubConnected = onValue(connectedRef, (snap) => {
+      if (snap.val() === true) {
+        userRef = push(viewersRef);
+        onDisconnect(userRef).remove().catch(() => {});
+        set(userRef, true).catch(() => {});
+      }
+    });
+
+    const unsubViewers = onValue(viewersRef, (snap) => {
+      const count = snap.exists() ? Object.keys(snap.val()).length : 0;
+      setViewers(count > 0 ? count : 1);
+    });
+
+    return () => {
+      unsubConnected();
+      unsubViewers();
+      if (userRef) {
+        remove(userRef).catch(() => {});
+      }
+    };
   }, []);
 
   const sections = [
@@ -1098,11 +1116,21 @@ export default function App() {
                     className="inline-block w-80 flex-shrink-0 mx-4 group/card border border-sageGreen bg-darkGreen overflow-hidden hover:border-neonGreen transition-all duration-300 transform hover:-translate-y-2"
                   >
                     <div className="border-b border-sageGreen group-hover/card:border-neonGreen overflow-hidden">
-                      <img
-                        src={achiev.img}
-                        alt={achiev.title}
-                        className="w-full h-40 object-cover opacity-100 group-hover/card:scale-105 transition-all duration-500"
-                      />
+                      {achiev.href ? (
+                        <a href={achiev.href} target="_blank" rel="noopener noreferrer" className="block w-full h-full cursor-pointer">
+                          <img
+                            src={achiev.img}
+                            alt={achiev.title}
+                            className="w-full h-40 object-cover opacity-100 group-hover/card:scale-105 transition-all duration-500"
+                          />
+                        </a>
+                      ) : (
+                        <img
+                          src={achiev.img}
+                          alt={achiev.title}
+                          className="w-full h-40 object-cover opacity-100 group-hover/card:scale-105 transition-all duration-500"
+                        />
+                      )}
                     </div>
                     <div className="p-6 whitespace-normal">
                       <h3 className="font-heading text-sageGreen group-hover/card:text-neonGreen transition-colors text-lg mb-2">
