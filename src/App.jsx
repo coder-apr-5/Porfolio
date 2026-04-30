@@ -601,7 +601,7 @@ export default function App() {
     },
     {
       title: "ElderGuardAI Showcase",
-      desc: "Presenting ElderGuardAI, an AI-powered safety system designed to protect and monitor the elderly.",
+      desc: "Presenting ElderGuardAI, an AI-powered safety system designed to protect and monitor the elderly, successfully securing a formal offer for corporate collaboration.",
       img: achievementElderguard,
       href: "https://www.linkedin.com/feed/update/urn:li:activity:7451503225096265729/"
     },
@@ -1072,7 +1072,7 @@ export default function App() {
                   ))}
                 </div>
                 <a
-                  href="#"
+                  href="https://drive.google.com/drive/folders/11FvusnulhAihqIpJ5XOyzOOtz5QnQ6dQ?usp=drive_link"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="pixel-btn mt-12 w-64 uppercase hover:!bg-transparent hover:!text-neonGreen text-center inline-block"
