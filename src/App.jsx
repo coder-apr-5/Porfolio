@@ -87,12 +87,12 @@ const GlitchAvatar = () => {
   }, []);
 
   return (
-    <div className="flex flex-col items-center md:items-end z-10 p-2 mt-12 md:mt-0 flex-shrink-0 mx-auto md:ml-auto md:mr-0">
+    <div className="flex flex-col items-center md:items-end z-10 p-2 mt-2 md:mt-0 flex-shrink-0 mx-auto md:ml-auto md:mr-0">
       <div className="font-heading text-neonGreen text-[10px] md:text-xs tracking-widest bg-darkGreen/80 border border-neonGreen/30 px-3 py-1.5 mb-4 shadow-[0_0_10px_rgba(57,255,20,0.1)] inline-flex items-center gap-2">
         <span className="w-1.5 h-1.5 rounded-full bg-neonGreen animate-pulse"></span>
         BASE_LOC: INDIA (IST)
       </div>
-      <div className="relative w-80 h-80 md:w-96 md:h-96 lg:w-[28rem] lg:h-[28rem] border-2 border-neonGreen bg-darkGreen shadow-[0_0_15px_rgba(57,255,20,0.3)] group">
+      <div className="relative w-[32rem] h-[32rem] md:w-96 md:h-96 lg:w-[32rem] lg:h-[32rem] border-2 border-neonGreen bg-darkGreen shadow-[0_0_15px_rgba(57,255,20,0.3)] group">
         <div
           className={`glitch-wrapper relative w-full h-full overflow-hidden border border-sageGreen/50 ${isGlitching ? "is-glitching" : ""}`}
         >
