@@ -500,12 +500,12 @@ export default function App() {
 
     const visitsRef = ref(db, "total_visits");
 
-    // Increment visit count once per session
-    if (!sessionStorage.getItem("visited")) {
+    // Increment visit count once per device (using localStorage)
+    if (!localStorage.getItem("portfolio_visited")) {
       update(ref(db), {
         total_visits: increment(1),
       }).catch((err) => console.error("Error incrementing visits:", err));
-      sessionStorage.setItem("visited", "true");
+      localStorage.setItem("portfolio_visited", "true");
     }
 
     // Listen to total visits
@@ -842,7 +842,7 @@ export default function App() {
             className="min-h-[85vh] flex flex-col md:flex-row justify-between items-center mb-20 relative pt-20 pb-12 gap-8 md:gap-4"
           >
             <div className="flex flex-col justify-center items-start w-full md:w-[55%] lg:w-[60%] relative z-20 h-full">
-              <p className="text-neonGreen font-body text-xl md:text-2xl mb-4 h-[32px]">
+              <p className="text-3xl md:text-4xl text-neonGreen font-body mb-4 min-h-[48px]">
                 {/* Live typing subline */}
                 <Typewriter
                   words={["> Initialize user session..."]}
@@ -850,7 +850,7 @@ export default function App() {
                   typeSpeed={60}
                 />
               </p>
-              <h1 className="font-heading text-4xl md:text-6xl text-white mb-6 leading-tight min-h-[6rem] md:min-h-[10rem]">
+              <h1 className="font-heading text-6xl md:text-8xl text-white mb-6 leading-tight min-h-[10rem] md:min-h-[14rem]">
                 Hi, I'm <br />
                 <span className="text-neonGreen text-shadow-neon whitespace-nowrap">
                   {/* Typewriter for Name */}
@@ -864,7 +864,7 @@ export default function App() {
                   />
                 </span>
               </h1>
-              <h2 className="text-2xl md:text-3xl text-sageGreen font-body mb-6 mt-2 h-[40px]">
+              <h2 className="text-5xl md:text-6xl text-sageGreen font-body mb-6 mt-2 min-h-[110px] md:min-h-[150px]">
                 {/* Swapping titles */}
                 <Typewriter
                   words={[
