@@ -494,6 +494,9 @@ export default function App() {
     const unsubViewers = onValue(viewersRef, (snap) => {
       const count = snap.exists() ? Object.keys(snap.val()).length : 0;
       setViewers(count > 0 ? count : 1);
+    }, (error) => {
+      console.error("Firebase Viewers Error:", error);
+      setViewers(1);
     });
 
     return () => {
