@@ -353,6 +353,14 @@ export default function App() {
   const [newLogName, setNewLogName] = useState("");
   const [logStatus, setLogStatus] = useState("");
   const [isAdmin, setIsAdmin] = useState(false);
+  const [localUserId] = useState(() => {
+    let uid = localStorage.getItem("portfolio_uid");
+    if (!uid) {
+      uid = "uid_" + Math.random().toString(36).substring(2, 11);
+      localStorage.setItem("portfolio_uid", uid);
+    }
+    return uid;
+  });
 
   const handleContactSubmit = async (e) => {
     e.preventDefault();
@@ -418,6 +426,7 @@ export default function App() {
         user: newLogName.trim() || "GUEST_" + Math.floor(Math.random() * 9999),
         text: newLog,
         timestamp: serverTimestamp(),
+        userId: localUserId,
       });
       setNewLog("");
       setNewLogName("");
@@ -1423,12 +1432,14 @@ export default function App() {
                                 {log.hidden ? "[UNHIDE]" : "[HIDE]"}
                               </button>
                             )}
-                            <button
-                              onClick={() => handleDeleteLog(log.id)}
-                              className="text-sageGreen hover:text-red-500 flex items-center gap-1 text-[10px] font-heading transition-colors tracking-wider"
-                            >
-                              [DELETE]
-                            </button>
+                            {(isAdmin || (log.userId && log.userId === localUserId)) && (
+                              <button
+                                onClick={() => handleDeleteLog(log.id)}
+                                className="text-sageGreen hover:text-red-500 flex items-center gap-1 text-[10px] font-heading transition-colors tracking-wider"
+                              >
+                                [DELETE]
+                              </button>
+                            )}
                           </div>
                         </div>
                       ))}
