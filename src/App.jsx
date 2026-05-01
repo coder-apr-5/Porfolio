@@ -433,8 +433,20 @@ export default function App() {
       setLogStatus("");
     } catch (error) {
       setLogStatus("ERR: POST_FAILED");
-      console.error(error);
       setTimeout(() => setLogStatus(""), 3000);
+    }
+  };
+
+  const handleAdminToggle = () => {
+    if (isAdmin) {
+      setIsAdmin(false);
+      return;
+    }
+    const pass = window.prompt("ENTER SYS_OP PASSCODE:");
+    if (pass === "APR5_ADMIN") {
+      setIsAdmin(true);
+    } else if (pass !== null) {
+      alert("ERR: ACCESS DENIED");
     }
   };
 
@@ -1364,7 +1376,7 @@ export default function App() {
                   <div className="flex justify-between items-center mb-6 pb-2 border-b border-sageGreen/20">
                     <h3
                       className="font-heading text-sm text-neonGreen cursor-pointer select-none title-admin"
-                      onDoubleClick={() => setIsAdmin(!isAdmin)}
+                      onDoubleClick={handleAdminToggle}
                     >
                       COMMENTS{" "}
                       {isAdmin && (
