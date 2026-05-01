@@ -964,6 +964,12 @@ export default function App() {
                   I aim to create scalable solutions that deliver value. I’m constantly learning,
                   experimenting, and pushing my limits to grow as a developer and problem solver.
                 </p>
+                <blockquote className="border-l-4 border-neonGreen pl-4 py-2 bg-neonGreen/5">
+                  <p className="font-heading text-sm text-neonGreen/80">
+                    "Code is poetry written for machines to parse, and humans to
+                    admire."
+                  </p>
+                </blockquote>
               </div>
 
               <div className="relative mx-auto group animate-float">
@@ -975,13 +981,6 @@ export default function App() {
                 />
               </div>
             </div>
-
-            <blockquote className="mt-24 py-12 flex flex-col items-center justify-center group">
-              <p className="font-heading text-3xl md:text-5xl text-neonGreen text-shadow-neon italic text-center leading-tight transition-transform duration-500 group-hover:scale-105">
-                "Code is poetry written for machines to parse, <br className="hidden md:block" /> and humans to admire."
-              </p>
-              <div className="mt-8 h-px w-24 bg-neonGreen/30 group-hover:w-64 transition-all duration-700"></div>
-            </blockquote>
           </section>
 
           {/* PORTFOLIO SHOWCASE */}
