@@ -1042,11 +1042,11 @@ export default function App() {
                       key={i}
                       className="group border border-neonGreen bg-darkGreen overflow-hidden hover:shadow-neon-strong transition-all duration-300 transform hover:-translate-y-2"
                     >
-                      <div className="border-b border-neonGreen overflow-hidden">
+                      <div className="border-b border-neonGreen overflow-hidden flex items-center justify-center bg-white/5">
                         <img
                           src={proj.img}
                           alt={proj.title}
-                          className="w-full h-48 object-cover opacity-100 group-hover:scale-105 transition-all duration-500"
+                          className="w-full h-48 object-contain md:object-cover opacity-100 group-hover:scale-105 transition-all duration-500"
                         />
                       </div>
                       <div className="p-6">
@@ -1148,8 +1148,8 @@ export default function App() {
               <div className="h-px bg-neonGreen/30 flex-grow"></div>
             </div>
 
-            <div className="relative w-full overflow-hidden group">
-              <div className="flex animate-marquee whitespace-nowrap">
+            <div className="relative w-full overflow-x-auto overflow-y-hidden group pb-4">
+              <div className="flex animate-marquee whitespace-nowrap w-max">
                 {[...achievData, ...achievData].map((achiev, i) => (
                   <div
                     key={i}

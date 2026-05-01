@@ -158,7 +158,7 @@
     animation: marquee 30s linear infinite;
   }
 
-  .animate-marquee:hover {
+  .animate-marquee:hover, .animate-marquee:active, .group:active .animate-marquee {
     animation-play-state: paused;
   }
 }
