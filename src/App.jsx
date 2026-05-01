@@ -26,6 +26,7 @@ import {
   update,
   onDisconnect,
   set,
+  increment,
 } from "firebase/database";
 
 import boyCoding from "./assets/boy_coding.png";
@@ -492,41 +493,27 @@ export default function App() {
     return () => unsubscribe();
   }, []);
 
-  // Live Viewer setup
-  const [viewers, setViewers] = useState(0);
+  // Total Visitors setup
+  const [totalVisits, setTotalVisits] = useState(0);
   useEffect(() => {
-    if (!db) {
-      setViewers(1);
-      return;
+    if (!db) return;
+
+    const visitsRef = ref(db, "total_visits");
+
+    // Increment visit count once per session
+    if (!sessionStorage.getItem("visited")) {
+      update(ref(db), {
+        total_visits: increment(1),
+      }).catch((err) => console.error("Error incrementing visits:", err));
+      sessionStorage.setItem("visited", "true");
     }
 
-    const viewersRef = ref(db, "active_viewers");
-    const connectedRef = ref(db, ".info/connected");
-    let userRef;
-
-    const unsubConnected = onValue(connectedRef, (snap) => {
-      if (snap.val() === true) {
-        userRef = push(viewersRef);
-        onDisconnect(userRef).remove().catch(() => { });
-        set(userRef, true).catch(() => { });
-      }
+    // Listen to total visits
+    const unsubVisits = onValue(visitsRef, (snap) => {
+      setTotalVisits(snap.val() || 0);
     });
 
-    const unsubViewers = onValue(viewersRef, (snap) => {
-      const count = snap.exists() ? Object.keys(snap.val()).length : 0;
-      setViewers(count > 0 ? count : 1);
-    }, (error) => {
-      console.error("Firebase Viewers Error:", error);
-      setViewers(1);
-    });
-
-    return () => {
-      unsubConnected();
-      unsubViewers();
-      if (userRef) {
-        remove(userRef).catch(() => { });
-      }
-    };
+    return () => unsubVisits();
   }, []);
 
   const sections = [
@@ -1501,7 +1488,7 @@ export default function App() {
             <span className="w-2 h-2 rounded-full bg-neonGreen animate-ping"></span>
             <span className="w-2 h-2 rounded-full bg-neonGreen absolute"></span>
             <span className="ml-2 font-heading text-xs uppercase tracking-wider">
-              Live Viewers: <span className="text-neonGreen">{viewers}</span>
+              Total Visitors: <span className="text-neonGreen">{totalVisits}</span>
             </span>
           </div>
         </div>
