@@ -89,11 +89,11 @@ const GlitchAvatar = () => {
 
   return (
     <div className="flex flex-col items-center md:items-end z-10 p-2 mt-2 md:mt-0 flex-shrink-0 mx-auto md:ml-auto md:mr-0">
-      <div className="font-heading text-neonGreen text-[10px] md:text-xs tracking-widest bg-darkGreen/80 border border-neonGreen/30 px-3 py-1.5 mb-4 shadow-[0_0_10px_rgba(57,255,20,0.1)] inline-flex items-center gap-2">
+      <div className="font-heading text-neonGreen text-sm md:text-xs tracking-widest bg-darkGreen/80 border border-neonGreen/30 px-3 py-1.5 mb-4 shadow-[0_0_10px_rgba(57,255,20,0.1)] inline-flex items-center gap-2">
         <span className="w-1.5 h-1.5 rounded-full bg-neonGreen animate-pulse"></span>
         BASE_LOC: INDIA (IST)
       </div>
-      <div className="relative w-[32rem] h-[32rem] md:w-80 md:h-80 lg:w-96 lg:h-96 border-2 border-neonGreen bg-darkGreen shadow-[0_0_15px_rgba(57,255,20,0.3)] group">
+      <div className="relative w-80 h-80 md:w-80 md:h-80 lg:w-96 lg:h-96 border-2 border-neonGreen bg-darkGreen shadow-[0_0_15px_rgba(57,255,20,0.3)] group">
         <div
           className={`glitch-wrapper relative w-full h-full overflow-hidden border border-sageGreen/50 ${isGlitching ? "is-glitching" : ""}`}
         >
@@ -820,7 +820,7 @@ export default function App() {
             </nav>
           )}
           <div className="bg-neonGreen/5 border-t border-neonGreen/10 py-2 overflow-hidden">
-            <div className="flex animate-marquee whitespace-nowrap text-[10px] md:text-xs font-heading text-neonGreen/80 tracking-widest uppercase items-center">
+            <div className="flex animate-marquee whitespace-nowrap text-sm md:text-xs font-heading text-neonGreen/80 tracking-widest uppercase items-center">
               <span className="mx-4">
                 Full Stack Developer with GenAI || 3x Hackathon Winner ||
                 NSAC Global Nominee’24 || Building Scalable & SaaS apps
@@ -965,7 +965,7 @@ export default function App() {
                   experimenting, and pushing my limits to grow as a developer and problem solver.
                 </p>
                 <blockquote className="border-l-4 border-neonGreen pl-4 py-2 bg-neonGreen/5">
-                  <p className="font-heading text-sm text-neonGreen/80">
+                  <p className="font-heading text-base text-neonGreen/80">
                     "Code is poetry written for machines to parse, and humans to
                     admire."
                   </p>
@@ -1068,10 +1068,10 @@ export default function App() {
                           {proj.desc}
                         </p>
                         <div className="flex flex-col sm:flex-row gap-3">
-                          <button className="flex-1 flex items-center justify-center gap-2 border border-neonGreen py-2 text-neonGreen font-heading text-xs hover:bg-neonGreen hover:text-darkGreen transition-colors">
+                          <button className="flex-1 flex items-center justify-center gap-2 border border-neonGreen py-2 text-neonGreen font-heading text-sm hover:bg-neonGreen hover:text-darkGreen transition-colors">
                             <ExternalLink size={14} /> DEMO
                           </button>
-                          <a href={proj.link || "#"} target={proj.link ? "_blank" : "_self"} rel="noopener noreferrer" className="flex-1 flex items-center justify-center gap-2 border border-sageGreen py-2 text-sageGreen font-heading text-xs hover:border-neonGreen hover:text-neonGreen transition-colors">
+                          <a href={proj.link || "#"} target={proj.link ? "_blank" : "_self"} rel="noopener noreferrer" className="flex-1 flex items-center justify-center gap-2 border border-sageGreen py-2 text-sageGreen font-heading text-sm hover:border-neonGreen hover:text-neonGreen transition-colors">
                             <Info size={14} /> DETAILS
                           </a>
                         </div>
@@ -1487,7 +1487,7 @@ export default function App() {
           <div className="inline-flex items-center gap-2 font-body text-sageGreen border border-sageGreen/50 px-4 py-2 rounded-sm shadow-neon">
             <span className="w-2 h-2 rounded-full bg-neonGreen animate-ping"></span>
             <span className="w-2 h-2 rounded-full bg-neonGreen absolute"></span>
-            <span className="ml-2 font-heading text-xs uppercase tracking-wider">
+            <span className="ml-2 font-heading text-sm uppercase tracking-wider">
               Total Visitors: <span className="text-neonGreen">{totalVisits}</span>
             </span>
           </div>

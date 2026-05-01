@@ -10,19 +10,19 @@
 
   @media (max-width: 1024px) {
     html {
-      font-size: 14px; /* Tablet */
+      font-size: 15px; /* Tablet */
     }
   }
 
   @media (max-width: 768px) {
     html {
-      font-size: 12px; /* Small tablet / Large phone */
+      font-size: 15px; /* Small tablet / Large phone */
     }
   }
 
   @media (max-width: 480px) {
     html {
-      font-size: 9px; /* Phones - significantly shrinks all rem units */
+      font-size: 14px; /* Phones */
     }
   }
 
