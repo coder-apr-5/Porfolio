@@ -147,29 +147,29 @@ const TimelineItem = ({ item, index }) => {
   return (
     <div
       ref={domRef}
-      className={`relative w-full my-8 flex justify-between items-center transition-all duration-700 ease-out transform ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 " + (index % 2 === 0 ? "-translate-x-12" : "translate-x-12")} flex-row ${index % 2 === 0 ? "flex-row-reverse" : ""}`}
+      className={`relative w-full my-4 md:my-8 flex justify-between items-center transition-all duration-700 ease-out transform ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 " + (index % 2 === 0 ? "-translate-x-12" : "translate-x-12")} flex-row ${index % 2 === 0 ? "flex-row-reverse" : ""}`}
     >
-      <div className="order-1 w-5/12 block"></div>
+      <div className="order-1 w-[45%] md:w-5/12 block"></div>
 
       {/* Center timeline dot */}
-      <div className="z-20 md:order-1 flex items-center shadow-neon bg-neonGreen w-4 h-4 rounded-full absolute left-1/2 transform -translate-x-1/2"></div>
+      <div className="z-20 md:order-1 flex items-center shadow-neon bg-neonGreen w-3 h-3 md:w-4 md:h-4 rounded-full absolute left-1/2 transform -translate-x-1/2"></div>
 
       {/* Card Content */}
       <div
-        className={`order-1 border border-neonGreen shadow-neon bg-darkGreen/80 p-6 w-5/12 ml-0 rounded-md`}
+        className={`order-1 border border-neonGreen shadow-neon bg-darkGreen/80 p-3 md:p-6 w-[45%] md:w-5/12 ml-0 rounded-md`}
       >
-        <div className="flex justify-between items-center mb-2">
-          <h3 className="font-heading text-neonGreen text-base leading-relaxed">
+        <div className="flex justify-between items-center mb-1 md:mb-2">
+          <h3 className="font-heading text-neonGreen text-[8px] md:text-base leading-relaxed">
             {item.degree || item.title}
           </h3>
         </div>
-        <h4 className="text-sageGreen font-body text-xl mb-2">
+        <h4 className="text-sageGreen font-body text-sm md:text-xl mb-1 md:mb-2 leading-tight">
           {item.school || item.company || "Achievement"}
         </h4>
-        <span className="inline-block bg-neonGreen/20 text-neonGreen px-3 py-1.5 text-sm font-body mb-4">
+        <span className="inline-block bg-neonGreen/20 text-neonGreen px-2 py-1 md:px-3 md:py-1.5 text-[10px] md:text-sm font-body mb-2 md:mb-4">
           {item.year}
         </span>
-        <p className="text-sageGreen text-base font-body leading-relaxed">
+        <p className="text-sageGreen text-xs md:text-base font-body leading-relaxed">
           {item.description}
         </p>
       </div>
@@ -1203,8 +1203,8 @@ export default function App() {
             id="education"
             className="py-20 border-t border-neonGreen/20 relative z-20"
           >
-            <div className="flex items-center gap-4 mb-16">
-              <h2 className="font-heading text-3xl text-neonGreen text-shadow-neon">
+            <div className="flex items-center gap-4 mb-8 md:mb-16">
+              <h2 className="font-heading text-xl md:text-3xl text-neonGreen text-shadow-neon">
                 &gt; EDUCATION
               </h2>
               <div className="h-px bg-neonGreen/30 flex-grow"></div>
@@ -1223,8 +1223,8 @@ export default function App() {
             id="experience"
             className="py-20 mb-20 border-t border-neonGreen/20 relative z-20"
           >
-            <div className="flex items-center gap-4 mb-16">
-              <h2 className="font-heading text-3xl text-neonGreen text-shadow-neon">
+            <div className="flex items-center gap-4 mb-8 md:mb-16">
+              <h2 className="font-heading text-xl md:text-3xl text-neonGreen text-shadow-neon">
                 &gt; WORK EXPERIENCE
               </h2>
               <div className="h-px bg-neonGreen/30 flex-grow"></div>
