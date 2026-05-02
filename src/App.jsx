@@ -145,35 +145,58 @@ const TimelineItem = ({ item, index }) => {
   }, []);
 
   return (
-    <div
-      ref={domRef}
-      className={`relative w-full my-8 flex justify-between items-center transition-all duration-700 ease-out transform ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 " + (index % 2 === 0 ? "-translate-x-12" : "translate-x-12")} flex-row ${index % 2 === 0 ? "flex-row-reverse" : ""}`}
-    >
-      <div className="order-1 w-5/12 block"></div>
-
-      {/* Center timeline dot */}
-      <div className="z-20 md:order-1 flex items-center shadow-neon bg-neonGreen w-4 h-4 rounded-full absolute left-1/2 transform -translate-x-1/2"></div>
-
-      {/* Card Content */}
+    <>
+      {/* Mobile layout: single column, no center line */}
       <div
-        className={`order-1 border border-neonGreen shadow-neon bg-darkGreen/80 p-6 w-5/12 ml-0 rounded-md`}
+        ref={domRef}
+        className={`md:hidden relative w-full my-4 transition-all duration-700 ease-out transform ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
       >
-        <div className="flex justify-between items-center mb-2">
-          <h3 className="font-heading text-neonGreen text-base leading-relaxed">
-            {item.degree || item.title}
-          </h3>
+        <div className="border border-neonGreen shadow-neon bg-darkGreen/80 p-4 rounded-md w-full">
+          <div className="flex justify-between items-center mb-2">
+            <h3 className="font-heading text-neonGreen text-xs leading-relaxed">
+              {item.degree || item.title}
+            </h3>
+          </div>
+          <h4 className="text-sageGreen font-body text-lg mb-2">
+            {item.school || item.company || "Achievement"}
+          </h4>
+          <span className="inline-block bg-neonGreen/20 text-neonGreen px-2 py-1 text-sm font-body mb-3">
+            {item.year}
+          </span>
+          <p className="text-sageGreen text-sm font-body leading-relaxed">
+            {item.description}
+          </p>
         </div>
-        <h4 className="text-sageGreen font-body text-xl mb-2">
-          {item.school || item.company || "Achievement"}
-        </h4>
-        <span className="inline-block bg-neonGreen/20 text-neonGreen px-3 py-1.5 text-sm font-body mb-4">
-          {item.year}
-        </span>
-        <p className="text-sageGreen text-base font-body leading-relaxed">
-          {item.description}
-        </p>
       </div>
-    </div>
+
+      {/* Desktop layout: alternating two-column with center line */}
+      <div
+        className={`hidden md:flex relative w-full my-8 justify-between items-center transition-all duration-700 ease-out transform ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 " + (index % 2 === 0 ? "-translate-x-12" : "translate-x-12")} flex-row ${index % 2 === 0 ? "flex-row-reverse" : ""}`}
+      >
+        <div className="order-1 w-5/12 block"></div>
+
+        {/* Center timeline dot */}
+        <div className="z-20 order-1 flex items-center shadow-neon bg-neonGreen w-4 h-4 rounded-full absolute left-1/2 transform -translate-x-1/2"></div>
+
+        {/* Card Content */}
+        <div className="order-1 border border-neonGreen shadow-neon bg-darkGreen/80 p-6 w-5/12 ml-0 rounded-md">
+          <div className="flex justify-between items-center mb-2">
+            <h3 className="font-heading text-neonGreen text-base leading-relaxed">
+              {item.degree || item.title}
+            </h3>
+          </div>
+          <h4 className="text-sageGreen font-body text-xl mb-2">
+            {item.school || item.company || "Achievement"}
+          </h4>
+          <span className="inline-block bg-neonGreen/20 text-neonGreen px-3 py-1.5 text-sm font-body mb-4">
+            {item.year}
+          </span>
+          <p className="text-sageGreen text-base font-body leading-relaxed">
+            {item.description}
+          </p>
+        </div>
+      </div>
+    </>
   );
 };
 
@@ -1211,7 +1234,7 @@ export default function App() {
             </div>
 
             <div className="relative container mx-auto px-2 md:px-6 flex flex-col space-y-8">
-              <div className="absolute z-0 w-1 bg-neonGreen/50 shadow-neon h-full left-1/2 transform -translate-x-1/2"></div>
+              <div className="hidden md:block absolute z-0 w-1 bg-neonGreen/50 shadow-neon h-full left-1/2 transform -translate-x-1/2"></div>
               {eduData.map((item, index) => (
                 <TimelineItem key={"edu" + index} item={item} index={index} />
               ))}
@@ -1231,7 +1254,7 @@ export default function App() {
             </div>
 
             <div className="relative container mx-auto px-2 md:px-6 flex flex-col space-y-8">
-              <div className="absolute z-0 w-1 bg-neonGreen/50 shadow-neon h-full left-1/2 transform -translate-x-1/2"></div>
+              <div className="hidden md:block absolute z-0 w-1 bg-neonGreen/50 shadow-neon h-full left-1/2 transform -translate-x-1/2"></div>
               {expData.map((item, index) => (
                 <TimelineItem
                   key={"exp" + index}
