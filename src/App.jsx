@@ -776,7 +776,7 @@ export default function App() {
             <div className="font-heading text-neonGreen text-xl text-shadow-neon">
               &lt;APR_5/&gt;
             </div>
-            
+
             {/* Desktop Nav */}
             <nav className="hidden md:flex gap-4">
               {sections.map((s) => (
@@ -808,11 +808,10 @@ export default function App() {
                     scrollToSection(s.id);
                     setIsMobileMenuOpen(false);
                   }}
-                  className={`font-heading text-sm text-left uppercase tracking-wider transition-colors ${
-                    activeSection === s.id
+                  className={`font-heading text-sm text-left uppercase tracking-wider transition-colors ${activeSection === s.id
                       ? "text-neonGreen text-shadow-neon"
                       : "text-sageGreen hover:text-neonGreen"
-                  }`}
+                    }`}
                 >
                   {s.label}
                 </button>
@@ -822,12 +821,12 @@ export default function App() {
           <div className="bg-neonGreen/5 border-t border-neonGreen/10 py-2 overflow-hidden">
             <div className="flex animate-marquee whitespace-nowrap text-sm md:text-xs font-heading text-neonGreen/80 tracking-widest uppercase items-center">
               <span className="mx-4">
-                Full Stack Developer with GenAI || 3x Hackathon Winner ||
+                || Full Stack Developer with GenAI || 3x Hackathon Winner ||
                 NSAC Global Nominee’24 || Building Scalable & SaaS apps
                 serving 1k+ users || 5+ Open Source Projects
               </span>
               <span className="mx-4">
-                Full Stack Developer with GenAI || 3x Hackathon Winner ||
+                || Full Stack Developer with GenAI || 3x Hackathon Winner ||
                 NSAC Global Nominee’24 || Building Scalable & SaaS apps
                 serving 1k+ users || 5+ Open Source Projects
               </span>
@@ -1332,7 +1331,7 @@ export default function App() {
                   </div>
                   <div className="flex flex-col items-center text-center gap-4">
                     <p className="font-body text-sageGreen text-sm md:text-base leading-relaxed">
-                      For any <span className="text-neonGreen font-bold">App Development / Business Enquiry</span>,<br/>
+                      For any <span className="text-neonGreen font-bold">App Development / Business Enquiry</span>,<br />
                       Contact at this number:
                     </p>
                     <div className="flex items-center gap-3 px-4 py-2 bg-neonGreen/10 border border-neonGreen shadow-[0_0_15px_rgba(57,255,20,0.2)] rounded-md animate-pulse-slow">
