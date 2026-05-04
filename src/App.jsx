@@ -1331,12 +1331,12 @@ export default function App() {
                     DIRECT_LINE
                   </div>
                   <div className="flex flex-col items-center text-center gap-4">
-                    <p className="font-body text-sageGreen text-base md:text-lg leading-relaxed">
+                    <p className="font-body text-sageGreen text-sm md:text-base leading-relaxed">
                       For any <span className="text-neonGreen font-bold">App Development / Business Enquiry</span>,<br/>
                       Contact at this number:
                     </p>
-                    <div className="flex items-center gap-3 px-6 py-3 bg-neonGreen/10 border-2 border-neonGreen shadow-[0_0_20px_rgba(57,255,20,0.3)] rounded-md animate-pulse-slow">
-                      <a href="tel:+919163893144" className="font-heading text-base md:text-xl text-neonGreen hover:text-white transition-colors tracking-tight">
+                    <div className="flex items-center gap-3 px-4 py-2 bg-neonGreen/10 border border-neonGreen shadow-[0_0_15px_rgba(57,255,20,0.2)] rounded-md animate-pulse-slow">
+                      <a href="tel:+919163893144" className="font-heading text-sm md:text-lg text-neonGreen hover:text-white transition-colors tracking-tight">
                         +91 9163893144
                       </a>
                     </div>
