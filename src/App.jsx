@@ -1253,7 +1253,7 @@ export default function App() {
 
             <div className="grid lg:grid-cols-2 gap-16">
               {/* Contact Form */}
-              <div className="border border-neonGreen p-8 bg-darkGreen shadow-neon relative">
+              <div className="border border-neonGreen p-6 md:p-8 bg-darkGreen shadow-neon relative">
                 <div className="absolute -top-3 left-4 bg-darkGreen px-2 font-heading text-sm text-neonGreen">
                   TRANSMISSION_PROTOCOL
                 </div>
@@ -1324,6 +1324,24 @@ export default function App() {
                     )}
                   </div>
                 </form>
+
+                {/* Business Enquiry Highlight Box */}
+                <div className="mt-8 pt-6 border-t border-neonGreen/30 relative group">
+                  <div className="absolute -top-[10px] left-1/2 -translate-x-1/2 bg-darkGreen px-3 font-heading text-xs text-neonGreen tracking-widest whitespace-nowrap">
+                    DIRECT_LINE
+                  </div>
+                  <div className="flex flex-col items-center text-center gap-4">
+                    <p className="font-body text-sageGreen text-base md:text-lg leading-relaxed">
+                      For any <span className="text-neonGreen font-bold">App Development / Business Enquiry</span>,<br/>
+                      Contact at this number:
+                    </p>
+                    <div className="flex items-center gap-3 px-6 py-3 bg-neonGreen/10 border-2 border-neonGreen shadow-[0_0_20px_rgba(57,255,20,0.3)] rounded-md animate-pulse-slow">
+                      <a href="tel:+919163893144" className="font-heading text-base md:text-xl text-neonGreen hover:text-white transition-colors tracking-tight">
+                        +91 9163893144
+                      </a>
+                    </div>
+                  </div>
+                </div>
               </div>
 
               {/* Socials & Comments */}
