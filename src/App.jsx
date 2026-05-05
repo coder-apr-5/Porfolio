@@ -1202,8 +1202,8 @@ export default function App() {
             id="education"
             className="py-20 border-t border-neonGreen/20 relative z-20"
           >
-            <div className="flex items-center gap-4 mb-8 md:mb-16">
-              <h2 className="font-heading text-xl md:text-3xl text-neonGreen text-shadow-neon">
+            <div className="flex items-center gap-4 mb-16">
+              <h2 className="font-heading text-3xl text-neonGreen text-shadow-neon">
                 &gt; EDUCATION
               </h2>
               <div className="h-px bg-neonGreen/30 flex-grow"></div>
@@ -1222,8 +1222,8 @@ export default function App() {
             id="experience"
             className="py-20 mb-20 border-t border-neonGreen/20 relative z-20"
           >
-            <div className="flex items-center gap-4 mb-8 md:mb-16">
-              <h2 className="font-heading text-xl md:text-3xl text-neonGreen text-shadow-neon">
+            <div className="flex items-center gap-4 mb-16">
+              <h2 className="font-heading text-3xl text-neonGreen text-shadow-neon">
                 &gt; WORK EXPERIENCE
               </h2>
               <div className="h-px bg-neonGreen/30 flex-grow"></div>
