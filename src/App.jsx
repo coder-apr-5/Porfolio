@@ -1067,10 +1067,29 @@ export default function App() {
                           {proj.desc}
                         </p>
                         <div className="flex flex-col sm:flex-row gap-3">
-                          <button className="flex-1 flex items-center justify-center gap-2 border border-neonGreen py-2 text-neonGreen font-heading text-sm hover:bg-neonGreen hover:text-darkGreen transition-colors">
+                          <button 
+                            onClick={(e) => {
+                              if (proj.title === "ElderGuardAI") {
+                                e.preventDefault();
+                                alert("This project is private & under production level, stay tuned!");
+                              }
+                            }}
+                            className="flex-1 flex items-center justify-center gap-2 border border-neonGreen py-2 text-neonGreen font-heading text-sm hover:bg-neonGreen hover:text-darkGreen transition-colors"
+                          >
                             <ExternalLink size={14} /> DEMO
                           </button>
-                          <a href={proj.link || "#"} target={proj.link ? "_blank" : "_self"} rel="noopener noreferrer" className="flex-1 flex items-center justify-center gap-2 border border-sageGreen py-2 text-sageGreen font-heading text-sm hover:border-neonGreen hover:text-neonGreen transition-colors">
+                          <a 
+                            href={proj.title === "ElderGuardAI" ? "#" : (proj.link || "#")} 
+                            target={proj.title === "ElderGuardAI" ? "_self" : (proj.link ? "_blank" : "_self")} 
+                            onClick={(e) => {
+                              if (proj.title === "ElderGuardAI") {
+                                e.preventDefault();
+                                alert("This project is private & under production level, stay tuned!");
+                              }
+                            }}
+                            rel="noopener noreferrer" 
+                            className="flex-1 flex items-center justify-center gap-2 border border-sageGreen py-2 text-sageGreen font-heading text-sm hover:border-neonGreen hover:text-neonGreen transition-colors"
+                          >
                             <Info size={14} /> DETAILS
                           </a>
                         </div>
