@@ -50,7 +50,7 @@ import cert2 from "./assets/cert2.jpg";
 import cert3 from "./assets/cert3.jpg";
 import cert4 from "./assets/cert4.jpg";
 import cert5 from "./assets/cert5.jpg";
-import cert6 from "./assets/cert6.jpg";
+import certNptel from "./assets/cert_nptel.jpg";
 import resumePdf from "./assets/Apurba_Roy_CV.pdf";
 import profileImg from "./assets/profile.jpg";
 
@@ -758,9 +758,9 @@ export default function App() {
       img: cert5,
     },
     {
-      title: "IBM Certified - Artificial Intelligence Foundations",
-      desc: "IBM",
-      img: cert6,
+      title: "The Joy of Computing using Python",
+      desc: "IIT Ropar & NPTEL",
+      img: certNptel,
     },
   ];
 
