@@ -710,6 +710,7 @@ export default function App() {
       desc: "AI Mental Health Chat Bot",
       img: MindSpaceLogo,
       link: "https://github.com/coder-apr-5/mindspace-chatbot",
+      demo: "https://mind-space.streamlit.app/",
     },
     {
       title: "Course Pathway Generator",
@@ -1072,6 +1073,10 @@ export default function App() {
                               if (proj.title === "ElderGuardAI") {
                                 e.preventDefault();
                                 alert("This project is private & under production level, stay tuned!");
+                              } else if (proj.demo) {
+                                window.open(proj.demo, "_blank");
+                              } else {
+                                alert("Demo not available for this project yet.");
                               }
                             }}
                             className="flex-1 flex items-center justify-center gap-2 border border-neonGreen py-2 text-neonGreen font-heading text-sm hover:bg-neonGreen hover:text-darkGreen transition-colors"
