@@ -36,7 +36,7 @@ import boyHoodie from "./assets/boy_hoodie.png";
 import ElderGuardAI from "./assets/ElderGuardAI.png";
 import PrivaSeal from "./assets/PrivaSeal.png";
 import AIInterviewCoach from "./assets/AIInterviewCoach.png";
-import AIStudyDashboard from "./assets/ai_study_dashboard.png";
+import MindSpaceLogo from "./assets/mindspace_logo.png";
 import CoursePathwayGenerator from "./assets/course_pathway_generator.png";
 import LibraryManagementSystem from "./assets/library_management_system.png";
 import achievementInnovation from "./assets/achievement_innovation.jpg";
@@ -706,10 +706,10 @@ export default function App() {
       link: "https://github.com/coder-apr-5/interview_coach",
     },
     {
-      title: "AI Study Dashboard",
-      desc: "An intelligent dashboard for organizing and tracking study sessions.",
-      img: AIStudyDashboard,
-      link: "https://github.com/coder-apr-5/AI-study-Dashboard",
+      title: "MindSpace",
+      desc: "AI Mental Health Chat Bot",
+      img: MindSpaceLogo,
+      link: "https://github.com/coder-apr-5/mindspace-chatbot",
     },
     {
       title: "Course Pathway Generator",
