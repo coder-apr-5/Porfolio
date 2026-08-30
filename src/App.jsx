@@ -704,6 +704,7 @@ export default function App() {
       desc: "Your Future Starts Here. Personalized AI coaching.",
       img: AIInterviewCoach,
       link: "https://github.com/coder-apr-5/interview_coach",
+      demo: "https://interview-coach-e1at.onrender.com/",
     },
     {
       title: "MindSpace",
@@ -810,8 +811,8 @@ export default function App() {
                     setIsMobileMenuOpen(false);
                   }}
                   className={`font-heading text-sm text-left uppercase tracking-wider transition-colors ${activeSection === s.id
-                      ? "text-neonGreen text-shadow-neon"
-                      : "text-sageGreen hover:text-neonGreen"
+                    ? "text-neonGreen text-shadow-neon"
+                    : "text-sageGreen hover:text-neonGreen"
                     }`}
                 >
                   {s.label}
@@ -1068,7 +1069,7 @@ export default function App() {
                           {proj.desc}
                         </p>
                         <div className="flex flex-col sm:flex-row gap-3">
-                          <button 
+                          <button
                             onClick={(e) => {
                               if (proj.title === "ElderGuardAI") {
                                 e.preventDefault();
@@ -1083,16 +1084,16 @@ export default function App() {
                           >
                             <ExternalLink size={14} /> DEMO
                           </button>
-                          <a 
-                            href={proj.title === "ElderGuardAI" ? "#" : (proj.link || "#")} 
-                            target={proj.title === "ElderGuardAI" ? "_self" : (proj.link ? "_blank" : "_self")} 
+                          <a
+                            href={proj.title === "ElderGuardAI" ? "#" : (proj.link || "#")}
+                            target={proj.title === "ElderGuardAI" ? "_self" : (proj.link ? "_blank" : "_self")}
                             onClick={(e) => {
                               if (proj.title === "ElderGuardAI") {
                                 e.preventDefault();
                                 alert("This project is private & under production level, stay tuned!");
                               }
                             }}
-                            rel="noopener noreferrer" 
+                            rel="noopener noreferrer"
                             className="flex-1 flex items-center justify-center gap-2 border border-sageGreen py-2 text-sageGreen font-heading text-sm hover:border-neonGreen hover:text-neonGreen transition-colors"
                           >
                             <Info size={14} /> DETAILS
