@@ -521,7 +521,7 @@ export default function App() {
     { id: "about", label: "ABOUT" },
     { id: "portfolio", label: "PORTFOLIO" },
     { id: "education", label: "EDUCATION" },
-    { id: "experience", label: "WORK EXPERIENCE" },
+    { id: "experience", label: "INTERNSHIPS" },
     { id: "contact", label: "CONTACT" },
   ];
 
@@ -1242,14 +1242,14 @@ export default function App() {
             </div>
           </section>
 
-          {/* WORK EXPERIENCE */}
+          {/* INTERNSHIPS */}
           <section
             id="experience"
             className="py-20 mb-20 border-t border-neonGreen/20 relative z-20"
           >
             <div className="flex items-center gap-4 mb-16">
               <h2 className="font-heading text-3xl text-neonGreen text-shadow-neon">
-                &gt; WORK EXPERIENCE
+                &gt; INTERNSHIPS
               </h2>
               <div className="h-px bg-neonGreen/30 flex-grow"></div>
             </div>
